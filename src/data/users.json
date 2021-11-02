@@ -1,0 +1,32 @@
+[
+    {
+        "userId": 1,
+        "login": "first",
+        "email": "example@domain.com",
+        "password": "password"
+    },
+    {
+        "userId": 2,
+        "login": "second",
+        "email": "user2@domain.com",
+        "password": "user2pwd"
+    },
+    {
+        "userId": 3,
+        "login": "third",
+        "email": "user3@domain.com",
+        "password": "user3pwd"
+    },
+    {
+        "userId": 4,
+        "login": "fourth",
+        "email": "user4@domain.com",
+        "password": "user4pwd"
+    },
+    {
+        "userId": 5,
+        "login": "fifth",
+        "email": "user5@domain.com",
+        "password": "user5pwd"
+    }
+]
