@@ -19,7 +19,6 @@ export default{
 <style lang="scss" scoped>
     .btn {
     display: flex;
-    padding: 0px;
     justify-content: space-between;
     padding: 0px 0px 8px 0px;
     border-bottom: 2px solid green;

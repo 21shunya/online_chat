@@ -9,8 +9,9 @@
             <router-link to="/reg">
                 <button id="reg">Регистрация</button>
             </router-link>
-            
-            <button id='in' type="submit">Войти</button>
+            <router-link to="/chat">
+                <button id='in' type="submit">Войти</button>
+            </router-link>
         </div>
         </form>
     </div>
