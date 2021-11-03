@@ -1,13 +1,8 @@
 <template>
-    <div>
-        <div v-if="message.senderId == 1">
-            <li >
+    <div class="my">
+         <li >
                 {{message.text}}
-            </li>
-        </div>
-        <li v-else>
-            -----------
-        </li>
+         </li>      
     </div>
 </template>
 
@@ -25,7 +20,13 @@ export default{
 </script>
 
 <style lang="scss" scoped>
+.my{
+    align-self: flex-end;
+    max-width: 75%;
+}
     li{
-
+        background: #FFFEC7;
+        border-radius: 20px;
+        padding: 5px 10px;
     }
 </style>
