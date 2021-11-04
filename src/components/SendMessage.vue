@@ -2,7 +2,7 @@
     <div>
         <form class="container">
             <input type="text" placeholder="Message..."/>
-            <button>send</button>
+            <button><img src="@/data/send.png"></button>
         </form>
     </div>
 </template>
@@ -18,6 +18,7 @@ export default{
 
 <style lang="scss" scoped>
     .container{
+        padding: 0px 0px 30px 0px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -27,8 +28,9 @@ export default{
             height: 40px;
             border-radius: 15px;
         }
+        button{
+            background: transparent;
+            border: none;
+        }
     }
-    
-    
-
 </style>

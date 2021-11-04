@@ -1,8 +1,8 @@
 <template>
     <div class="other">
         <li >
-            <div id="name">{{message.senderId}}</div>
-            {{message.text}}
+            <div id="name">{{msg.senderId}}</div>
+            {{msg.text}}
         </li>
     </div>
 </template>
@@ -12,7 +12,7 @@
 export default{
     name: 'Message',
     props:{
-        message: {
+        msg: {
             type: Object,
             required: true
         }

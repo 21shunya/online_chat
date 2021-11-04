@@ -1,7 +1,7 @@
 <template>
     <div class="my">
          <li >
-                {{message.text}}
+                {{msg.text}}
          </li>      
     </div>
 </template>
@@ -11,7 +11,7 @@
 export default{
     name: 'Message',
     props:{
-        message: {
+        msg: {
             type: Object,
             required: true
         }

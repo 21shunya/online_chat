@@ -1,18 +1,15 @@
 <template>
     <div class="mes">
         <ul
-            v-for="message in messages"
-            :key="message.senderId">
-            
+            v-for="msg in messages"
+            :key="msg.id">
             <MyMessage
-                id="my"
-                v-if="message.senderId == 1"
-               :message="message"
+                v-if="msg.senderId == 1"
+                :msg="msg"
             />
             <OtherMessages
-                id="other"
                 v-else 
-                :message="message"
+                :msg="msg"
             />
         </ul>
     </div>
@@ -38,7 +35,6 @@ export default{
         display: flex;
         flex-direction: column;
         flex: 1;
-        background: rgba(128, 128, 128, 0.089);
     }
     ul{
         display: flex;

@@ -1,10 +1,12 @@
 <template>
-    <div class="chat">Chat
+    <div class="chat">
+        <div class="a">
         <TopOfChart />
         <MessageList 
             :messages="messageList"
         />
         <SendMessage />
+        </div>
     </div>
 </template>
 
@@ -13,6 +15,7 @@ import TopOfChart from '@/components/TopOfChat.vue'
 import MessageList from '@/components/MessageList.vue'
 import SendMessage from '@/components/SendMessage.vue'
 import messages from '@/data/messages.json'
+import { fetchMessages } from '@/service/dataService';
 
 export default{
     name: 'Chat',
@@ -25,16 +28,30 @@ export default{
         messageList: []
     }),
     mounted() {
-        this.messageList=messages
-    }
+        this.fetchMessages()
+    },
+    methods: {
+        async fetchMessages() {
+            try {
+                this.messageList = await fetchMessages();
+            } catch (error) {
+            } finally{
+            }
+        },
+    },
 };
 </script>
 
 <style lang="scss" scoped>
     .chat{
-        display: flex; 
+        display: flex;
         flex-direction: column;
         width: 40%;
-        height: 100vh;       
+        
+    }
+    .a{
+        display: flex; 
+        flex-direction: column;
+        height: 100vh;
     }
 </style>
