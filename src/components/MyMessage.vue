@@ -1,8 +1,6 @@
 <template>
     <div class="my">
-         <li >
-                {{msg.text}}
-         </li>      
+        <div class="msg">{{msg.text}}</div>     
     </div>
 </template>
 
@@ -24,7 +22,7 @@ export default{
     align-self: flex-end;
     max-width: 75%;
 }
-    li{
+    .msg{
         background: #FFFEC7;
         border-radius: 20px;
         padding: 5px 10px;

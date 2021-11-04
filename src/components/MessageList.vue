@@ -1,6 +1,7 @@
 <template>
-    <div class="mes">
-        <ul
+    <div class="msg">
+        <div
+            class="list"
             v-for="msg in messages"
             :key="msg.id">
             <MyMessage
@@ -11,6 +12,9 @@
                 v-else 
                 :msg="msg"
             />
+        </div>    
+        <ul>
+           
         </ul>
     </div>
 </template>
@@ -31,12 +35,14 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-    .mes{
+    .msg{
         display: flex;
         flex-direction: column;
         flex: 1;
+        flex-shrink: 1;
     }
-    ul{
+    .list{
+        margin: 5px;
         display: flex;
         flex-direction: column;
         list-style: none;

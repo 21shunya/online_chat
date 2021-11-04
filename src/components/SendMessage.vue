@@ -22,11 +22,11 @@ export default{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-
         input{
             width: 92%;
             height: 40px;
             border-radius: 15px;
+            margin: 0px 15px;
         }
         button{
             background: transparent;
