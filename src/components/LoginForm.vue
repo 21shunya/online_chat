@@ -36,14 +36,14 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 0px;
-    margin: 50px 0px;
+    margin: 30px 0px;
 }
 
 input{
     border-radius: 15px;
     border: 0px;
-    height: 40px;
-    width: 360px;
+    height: 35px;
+    width: 330px;
     margin: 10px 0px;
     padding: 0px 15px; //отступ текста в полях
     font-family: 'Noto Sans';
@@ -51,22 +51,22 @@ input{
         color: #888888;
     }
     color: black;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .btn {
     display: flex;
     padding: 0px;
-    width: 374px;
-    margin: 50px 10px;
+    width: 344px;
+    margin: 30px 10px;
     justify-content: space-between;
 }
 
 button {
-    padding: 12px 25px;
+    padding: 10px 20px;
     border-radius: 20px;
     font-family: Mulish;
-    font-size: 23px;    
+    font-size: 20px;    
 }
 
 #reg {
