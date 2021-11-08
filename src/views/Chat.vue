@@ -17,6 +17,7 @@ import SendMessage from '@/components/SendMessage.vue'
 import messages from '@/data/messages.json'
 import { fetchMessages } from '@/service/dataService';
 
+
 export default{
     name: 'Chat',
     components:{
