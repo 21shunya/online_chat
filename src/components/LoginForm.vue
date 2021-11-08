@@ -43,7 +43,7 @@ input{
     border-radius: 15px;
     border: 0px;
     height: 35px;
-    width: 330px;
+    width: 300px;
     margin: 10px 0px;
     padding: 0px 15px; //отступ текста в полях
     font-family: 'Noto Sans';
@@ -57,7 +57,7 @@ input{
 .btn {
     display: flex;
     padding: 0px;
-    width: 344px;
+    width: 314px;
     margin: 30px 10px;
     justify-content: space-between;
 }

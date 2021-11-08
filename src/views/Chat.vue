@@ -1,12 +1,12 @@
 <template>
     <div class="chat">
-        <div class="a">
+        <!-- <div class="a"> -->
         <TopOfChart />
         <MessageList 
             :messages="messageList"
         />
         <SendMessage />
-        </div>
+        <!-- </div> -->
     </div>
 </template>
 
@@ -47,6 +47,7 @@ export default{
         display: flex;
         flex-direction: column;
         width: 40%;
+        height: 100vh;
         
     }
     .a{

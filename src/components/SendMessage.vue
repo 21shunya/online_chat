@@ -24,7 +24,7 @@ export default{
         justify-content: space-between;
         input{
             width: 92%;
-            height: 40px;
+            height: 35px;
             border-radius: 15px;
             margin: 0px 15px;
         }

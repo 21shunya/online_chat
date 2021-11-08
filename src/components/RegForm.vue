@@ -2,19 +2,19 @@
     <div class="wrapper">
         <form class="wrapper">
         <div class="fields">
-            <span>Name</span>
+            <label>Name</label>
             <input 
                 v-model="user.name"
                 type="text" 
             />
             <div class="indented_box">
-                <span>Email</span>
+                <label>Email</label>
                 <input 
                     v-model="user.email"
                     type="email" 
                 />
             </div>
-            <span>Password</span>
+            <label>Password</label>
             <input 
                 v-model="user.pass"
                 type="password" />
@@ -62,11 +62,11 @@ export default {
     padding: 0px;
     margin: 50px 0px;
 }
-span {
+label {
     align-self: flex-start;
     font-family: 'Noto Sans';
     color: #888888;
-    font-size: 20px;
+    font-size: 17px;
     padding: 0px 0px 13px 10px;
 }
 .indented_box {
@@ -77,10 +77,10 @@ span {
 input{
     border-radius: 15px;
     border: 0px;
-    height: 40px;
+    height: 35px;
     width: 332px;
     font-family: 'Noto Sans';
-    color: #888888;
+    color: black;
     font-size: 20px;
 }
 //////////////////////////////////////
@@ -98,7 +98,7 @@ button {
     padding: 12px 25px;
     border-radius: 20px;
     font-family: Mulish;
-    font-size: 23px;
+    font-size: 20px;
     background: linear-gradient(110.86deg, #00D94A 9.46%, #FFD602 95.13%);
     border: 0px;
     color: #20213A;    

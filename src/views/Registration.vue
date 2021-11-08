@@ -49,7 +49,7 @@ export default {
 
 #title {
   font-family: Lora;
-  font-size: 42px;
+  font-size: 39px;
   margin: 50px;
   color: #FFFFFF;
   font-weight: bold;
