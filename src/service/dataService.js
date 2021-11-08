@@ -8,7 +8,6 @@ export async function fetchMessages() {
 export async function fetchUser(id) {
     try {
         const response = await axios.get('/user/' + id);
-        console.log(response?.data ?? {})
         return response?.data ?? {};
     } catch (error) {
         console.error({ error });
