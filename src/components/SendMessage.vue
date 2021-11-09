@@ -1,17 +1,20 @@
 <template>
     <div>
-        <form class="container">
+        <form class="container" @keyup.enter="onSubmitClicked">
             <input type="text" placeholder="Message..."/>
-            <button><img src="@/data/send.png"></button>
+            <button @click="onSubmitClicked"><img src="@/data/send.png"></button>
         </form>
     </div>
 </template>
 
 <script>
+import {sendMsg} from '@/service/dataService';
+
 export default{
     name: 'SendMessage',
     props: {},
     methods: {
+        async onSubmitClicked
     }
 };
 </script>
@@ -27,6 +30,7 @@ export default{
             height: 35px;
             border-radius: 15px;
             margin: 0px 15px;
+            font-size: 17px;
         }
         button{
             background: transparent;

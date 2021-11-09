@@ -15,3 +15,18 @@ export async function fetchUser(id) {
     }
 
 }
+
+export async function sendMsg({senderId, text, attachments, datetime}) {
+    try {
+        const response = await axios.post('/msg', {
+            senderId,
+            text,
+            attachments,
+            datetime
+        });
+        return response?.data ?? {};
+    } catch (error) {
+        console.error({ error });
+        throw error;
+    }
+}
