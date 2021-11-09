@@ -34,4 +34,7 @@ export default{
         background: transparent;
         border: none;
     }
+    img{
+        height: 25px;
+    }
 </style>
