@@ -43,13 +43,9 @@ export default{
 <style lang="scss" scoped>
 .wrapper{
     align-self: flex-start;
-    max-width: 75%;
-    display: flex;
     flex-direction: column;
     background: #A6FF72;
-    border-radius: 20px;
     align-items: flex-start;
-    padding: 5px 10px;
 }
 .txt-time{
     display: flex;
@@ -60,10 +56,6 @@ export default{
 }
 .login{    
     padding: 0px 0px 5px 0px;  
-}
-.time{
-    align-self: flex-end;
-    padding: 0px 8px 0px 0px; 
 }
 #text{
     padding: 0px 20px 0px 0px;

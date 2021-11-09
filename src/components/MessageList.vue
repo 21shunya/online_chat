@@ -12,10 +12,7 @@
                 v-else 
                 :msg="msg"
             />
-        </div>    
-        <ul>
-           
-        </ul>
+        </div>
     </div>
 </template>
 
@@ -40,13 +37,23 @@ export default{
         flex-direction: column;
         flex: 1;
         flex-shrink: 1;
+        
     }
     .list{
-        margin: 5px;
+        
         display: flex;
         flex-direction: column;
-        list-style: none;
+        margin: 5px;
+        font-size: 20px;
+        color: #2F2F2F;
     }
+    /////////////////////////// стили компонентов сообщений
+    .wrapper{
+    max-width: 75%;
+    display: flex;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
 
 </style>
 

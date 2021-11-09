@@ -26,4 +26,8 @@ export default{
 </script>
 
 <style lang="scss" scoped>
+.time{
+    align-self: flex-end;
+    padding: 0px 8px 0px 0px; 
+}
 </style>
