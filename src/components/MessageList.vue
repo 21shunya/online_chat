@@ -37,8 +37,31 @@ export default{
         flex-direction: column;
         flex: 1;
         flex-shrink: 1;
-        
+        overflow-y: auto;
     }
+
+/* полоса прокрутки (скроллбар) */    
+    ::-webkit-scrollbar {
+    width: 7px; /* ширина для вертикального скролла */
+    background-color: transparent;
+    
+    }
+// ::-webkit-scrollbar:hover {
+//     background-color: rgba(255, 255, 255, 0.5);
+// }
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid;
+   
+    border-radius: 10em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+   background-color: #20213A;
+   border-color: rgba(255, 255, 255, 0.5);
+}
     .list{
         
         display: flex;
@@ -47,7 +70,7 @@ export default{
         font-size: 20px;
         color: #2F2F2F;
     }
-    /////////////////////////// стили компонентов сообщений
+    /////// стили компонентов сообщений
     .wrapper{
     max-width: 75%;
     display: flex;
