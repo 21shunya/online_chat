@@ -1,12 +1,17 @@
 <template>
     <div class="wrapper">
         <div class="info login">{{ user.login }}</div>
-        <div id="text">{{ msg.text }}</div>
-        <div class="info time">{{ time }}</div>
+        <div class="txt-time">
+            <div id="text">{{ msg.text }}</div>
+            <TimeOfMsg
+                :msg="msg"
+            />
+        </div>
     </div>
 </template>
 
 <script>
+import TimeOfMsg from '@/components/TimeOfMsg.vue'
 import { fetchUser } from '@/service/dataService'
 
 export default{
@@ -17,22 +22,20 @@ export default{
             required: true
         }
     },
+    components:{
+        TimeOfMsg
+    },
     data: () => ({
         user: {},
-        time: '',
     }),
     mounted() {
         this.fetchUser();
-        this.getTime();
     },
     
     methods: {
         async fetchUser(){
             this.user = await fetchUser(this.msg.senderId)
         },
-        async getTime(){
-            this.time = this.msg.datetime.split('T')[1].split(':',2).join(':') 
-        }
     }
 }
 </script>
@@ -48,23 +51,21 @@ export default{
     align-items: flex-start;
     padding: 5px 10px;
 }
+.txt-time{
+    display: flex;
+}
 .info{
     font-size: 12px;
     color: #888888;    
 }
 .login{    
     padding: 0px 0px 5px 0px;  
-    }
+}
 .time{
     align-self: flex-end;
-    padding: 0px 8px 6px 0px; 
+    padding: 0px 8px 0px 0px; 
 }
-
-        
-
-        #text{
-            padding: 0px 50px 0px 0px;
-            font-size: 20px;
-            color: #2F2F2F;
-        }
+#text{
+    padding: 0px 20px 0px 0px;
+}             
 </style>
