@@ -5,7 +5,9 @@
         <MessageList 
             :messages="messageList"
         />
-        <SendMessage />
+        <SendMessage 
+        @send_Msg="fetchMessages"
+        />
         <!-- </div> -->
     </div>
 </template>

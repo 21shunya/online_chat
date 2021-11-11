@@ -17,6 +17,7 @@ export async function fetchUser(id) {
 }
 
 export async function sendMsg({senderId, text, attachments, datetime}) {
+    // console.log({senderId, text, attachments, datetime})
     try {
         const response = await axios.post('/msg', {
             senderId,
@@ -24,6 +25,7 @@ export async function sendMsg({senderId, text, attachments, datetime}) {
             attachments,
             datetime
         });
+        if (! response?.data.result) console.log("msg doesn't send")    
         return response?.data ?? {};
     } catch (error) {
         console.error({ error });

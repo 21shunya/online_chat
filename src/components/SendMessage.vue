@@ -1,9 +1,9 @@
 <template>
     <div>
-        <form class="container" @keyup.enter="onSubmitClicked">
-            <input type="text" placeholder="Message..."/>
+        <div class="container" @keyup.enter="onSubmitClicked">
+            <input type="text" v-model="text" placeholder="Message..."/>
             <button @click="onSubmitClicked"><img src="@/data/send.png"></button>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -13,8 +13,23 @@ import {sendMsg} from '@/service/dataService';
 export default{
     name: 'SendMessage',
     props: {},
+    data: () => ({
+        text: ''
+    }),
     methods: {
-        async onSubmitClicked
+        async onSubmitClicked() {
+            if(this.text !== '') {
+                const send_Msg = await sendMsg({
+                    senderId: 1,
+                    text: this.text,
+                    attachments: [],
+                    datetime: new Date().toISOString()
+                });
+                this.text=''
+                //$event.preventDefault();
+                this.$emit('send_Msg',send_Msg)
+            }
+        }
     }
 };
 </script>

@@ -67,7 +67,7 @@ export default{
         display: flex;
         flex-direction: column;
         margin: 5px;
-        font-size: 20px;
+        font-size: 17px;
         color: #2F2F2F;
     }
     /////// стили компонентов сообщений
