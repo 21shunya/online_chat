@@ -1,9 +1,9 @@
 <template>
     <div class="info">
         <div
-        v-if="currentDate - new Date(this.date_txt) != 0"
+        v-if="currentDate - new Date(this.date) != 0"
         >
-            {{ date_txt }}
+            {{ date }}
         </div>
         <div v-else>today</div>
     </div>
@@ -20,7 +20,7 @@ export default {
     },
     data: () => ({
         date: Date(),
-        date_txt: '',
+        date: '',
         currentDate: new Date().toISOString(),
     }),
     mounted() {
@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         async getData() {
-            this.date_txt = this.msg.datetime.split('T')[0].split('-').reverse().join('-')
+            this.date = this.msg.datetime.split('T')[0].split('-').reverse().join('-')
             this.currentDate = new Date(this.currentDate.split('T')[0].split('-').reverse().join('-'))
         }
     }
