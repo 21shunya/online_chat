@@ -4,6 +4,9 @@
             class="list"
             v-for="msg in messages"
             :key="msg.id">
+            <DateOfMsgs 
+                :msg="msg"
+            />
             <MyMessage
                 v-if="msg.senderId == 1"
                 :msg="msg"
@@ -19,15 +22,16 @@
 <script>
 import MyMessage from '@/components/MyMessage.vue'
 import OtherMessages from '@/components/OtherMessages.vue'
+import DateOfMsgs from '@/components/DateOfMsgs.vue'
 
 export default{
     name: 'MessageList',
     props: ['messages'],
     components:{
         MyMessage,
-        OtherMessages
+        OtherMessages,
+        DateOfMsgs
     },
-    
 }
 </script>
 

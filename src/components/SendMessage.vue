@@ -43,9 +43,14 @@ export default{
         input{
             width: 92%;
             height: 35px;
+            padding: 0px 10px;
+            border: none;
             border-radius: 15px;
-            margin: 0px 15px;
             font-size: 17px;
+            ::placeholder{
+                color: #888888;
+            }
+            color: black;
         }
         button{
             background: transparent;
