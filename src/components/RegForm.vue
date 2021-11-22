@@ -16,7 +16,7 @@
             </div>
             <label>Password</label>
             <input 
-                v-model="user.pass"
+                v-model="user.password"
                 type="password" />
         </div>
         <router-link to="/">

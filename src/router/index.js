@@ -28,6 +28,14 @@ const routes = [
     },
     component: () => import('@/views/Chat.vue')
   },
+  {
+    path: '/profile',
+    name: 'Profile',
+    meta:{
+      title: 'profile'
+    },
+    component: () => import('@/views/Profile.vue')
+  },
   
 ]
 

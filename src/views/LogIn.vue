@@ -16,12 +16,6 @@ export default {
   components: {
     LoginForm
   },
-  data: () => ({
-    userList: []
-  }),
-  mounted() {
-    this.userList=users
-  }
 }
 </script>
 

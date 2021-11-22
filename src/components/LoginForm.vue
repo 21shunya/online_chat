@@ -1,29 +1,48 @@
 <template>
     <div>
-        <form class="wrapper">
+        <form class="wrapper" @submit.prevent="handleLogin">
         <div class="fields">
-            <input type="email" placeholder="email"/>
-            <input type="password" placeholder="password"/>
+            <input v-model="user.username" type="text" placeholder="login"/>
+            <input v-model="user.password" type="password" placeholder="password"/>
         </div>
         <div class="btn">
             <router-link to="/reg">
                 <button id="reg">Регистрация</button>
             </router-link>
-            <router-link to="/chat">
-                <button id='in' type="submit">Войти</button>
-            </router-link>
+            <button id='in' type="submit">Войти</button>
         </div>
         </form>
     </div>
 </template>
 
 <script>
+import User from '@/models/user';
 
 export default {
     name: 'LoginForm',
-    props: {},
+    data: () => ({
+        user: new User('', ''),
+    }),
+    computed:{
+        loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+        }
+    },
+    created() {
+    if (this.loggedIn) {
+      this.$router.push('/profile');
+        }
+    },
     methods: {
-    }
+        handleLogin() {
+            if (this.user.username && this.user.password) {
+            this.$store.dispatch('auth/login', this.user).then(
+            () => {
+              this.$router.push('/profile');
+                },
+            )};
+        }
+    },
 };
 </script>
 
