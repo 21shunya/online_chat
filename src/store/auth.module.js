@@ -1,41 +1,44 @@
-import { doRegister, doLogin, doLogout } from "../netClient/authService";
 import http from "@/netClient/config.js";
 
 
-// const user = JSON.parse(localStorage.getItem('user'));
-// const initialState = user
-//   ? { status: { loggedIn: true }, user }
-//   : { status: { loggedIn: false }, user: null };
+const user = localStorage.getItem('user');
+const initialState = user
+  ? { status: { loggedIn: true }, user }
+  : { status: { loggedIn: false }, user: null };
 
 export const auth = {
   namespaced: true,
-  // state: initialState,
+  state: initialState,
   actions: {
-    async doLogin({}, { login, password}) {
+    async doLogin({commit}, {login, password}) {
       try {
         const response = await http.post('/auth/login', { 
           login,
           password
         })
         const user = JSON.stringify(response.data)
+        const { accessToken } = JSON.parse(user)
         localStorage.user = user;
-        return JSON.parse(localStorage.user).accessToken  // todo: привести к нормальному виду(вынести в отдельную переменную)   
+        localStorage.accessToken = accessToken;
+        commit('loginSuccess', user);
+        return localStorage.accessToken 
       } catch (error) {
         console.error({ error });
         throw error;
       }
     },
 
-    async doLogout({}, ) {
+    async doLogout({commit},) {
       try {
         const response = await http.get('/auth/logout',
         {
             headers : {
                 'Content-Type': 'application/json',
-                'x-access-token': JSON.parse(localStorage.user).accessToken //----------
+                'x-access-token': localStorage.accessToken
             }
         });
-        localStorage.removeItem('user');
+        commit('logout');
+        localStorage.removeItem('user', 'accessToken');
         return response.data;
     } catch (error) {
         console.error({ error })

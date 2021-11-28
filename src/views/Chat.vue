@@ -30,7 +30,16 @@ export default{
     data: () => ({
         messageList: []
     }),
-    mounted() {
+    computed: {
+      loggedIn() {
+        return this.$store.state.auth.status.loggedIn;
+      }
+  },
+  mounted() {
+    if (!this.loggedIn) {
+      this.$router.push('/login');
+    }
+
         this.fetchMessages()
     },
     methods: {

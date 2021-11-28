@@ -6,9 +6,9 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/login',
-    name: 'LogIn',
+    name: 'Login',
     meta:{
-      title: 'LogIn'
+      title: 'Login'
     },
     component: () => import('@/views/LogIn.vue')
   },
@@ -43,6 +43,15 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const accessToken = localStorage.accessToken
+  if (accessToken || to.name === 'Login' || to.name === 'Registration') {
+   next();
+  } else {
+    next('/login')
+  }
 })
 
 export default router
