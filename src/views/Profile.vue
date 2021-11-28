@@ -3,13 +3,14 @@
     <div class="box">
         <div>
             <!-- <span>ID: {{currentUser.id}}</span> -->
-            <button @click.prevent="logOut">LogOut</button>
+            <button @click.prevent="logout">Logout</button>
         </div>
     </div>
 </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'Profile',
   computed: {
@@ -23,9 +24,14 @@ export default {
     // }
   },
   methods: {
-    logOut() {
-      this.$store.dispatch('auth/logout');
-      this.$router.push('/login');
+    ...mapActions('auth', ['doLogout']),
+    async logout() {
+      try {
+        await this.doLogout();
+        this.$router.push('/login');
+      } catch (error) {
+        console.log({error})
+      }
     }
   }
 };

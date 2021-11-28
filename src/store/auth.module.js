@@ -35,7 +35,7 @@ export const auth = {
                 'x-access-token': JSON.parse(localStorage.user).accessToken //----------
             }
         });
-        localStorage.removeItem('accessToken');
+        localStorage.removeItem('user');
         return response.data;
     } catch (error) {
         console.error({ error })
