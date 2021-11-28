@@ -1,9 +1,9 @@
 <template>
     <div>
-        <form class="wrapper" @submit.prevent="handleLogin">
+        <form class="wrapper" @submit.prevent="onFormSubmit">
         <div class="fields">
-            <input v-model="user.username" type="text" placeholder="login"/>
-            <input v-model="user.password" type="password" placeholder="password"/>
+            <input v-model="login" type="text" placeholder="login"/>
+            <input v-model="password" type="password" placeholder="password"/>
         </div>
         <div class="btn">
             <router-link to="/reg">
@@ -16,32 +16,50 @@
 </template>
 
 <script>
-import User from '@/models/user';
+import { mapActions } from "vuex";
 
 export default {
     name: 'LoginForm',
     data: () => ({
-        user: new User('', ''),
+        login: '',
+        password: ''
     }),
     computed:{
         loggedIn() {
-      return this.$store.state.auth.status.loggedIn;
+        return this.$store.state.auth.status.loggedIn;
         }
     },
     created() {
     if (this.loggedIn) {
-      this.$router.push('/profile');
+      this.$router.push('/chat');
         }
     },
     methods: {
-        handleLogin() {
-            if (this.user.username && this.user.password) {
-            this.$store.dispatch('auth/login', this.user).then(
-            () => {
-              this.$router.push('/profile');
-                },
-            )};
-        }
+        ...mapActions('auth', ['doLogin']),
+        async onFormSubmit() {
+            try{
+                const token = await this.doLogin({
+                        login: this.login.trim(),
+                        password: this.password.trim()
+                });
+                    console.warn({token})
+                    if (token){
+                        this.$router.push('/chat');
+                    }
+            } catch (error) {
+                console.error({ error })
+            }
+        },
+        
+        // handleLogin() {
+        //     if (this.user.login && this.user.password) {
+        //     this.$store.dispatch('auth/login', this.user).then(
+        //     () => {
+        //       this.$router.push('/chat');
+        //         },
+        //     )};
+        // }
+
     },
 };
 </script>

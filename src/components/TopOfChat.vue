@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="btn">
-            <button><img src="@/data/profile.png"></button>
+            <button @click="goToProfile"><img src="@/data/profile.png"></button>
             <button id="search"><img src="@/data/Search.png"></button>
         </div>
     </div>
@@ -12,6 +12,9 @@ export default{
     name: 'TopOfChat',
     props: {},
     methods: {
+        goToProfile() {
+            this.$router.push("/profile")
+        }
     }
 };
 </script>

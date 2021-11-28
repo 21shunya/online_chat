@@ -1,50 +1,69 @@
 <template>
     <div class="wrapper">
-        <form class="wrapper">
+        <form class="wrapper" @submit.prevent="handleRegister">
         <div class="fields">
-            <label>Name</label>
+            <label for="login">Login</label>
             <input 
-                v-model="user.name"
+                v-model="user.login"
                 type="text" 
+                name="login"
             />
             <div class="indented_box">
-                <label>Email</label>
+                <label for="email">Email</label>
                 <input 
                     v-model="user.email"
                     type="email" 
+                    name="email"
                 />
             </div>
-            <label>Password</label>
+            <label for="password">Password</label>
             <input 
                 v-model="user.password"
-                type="password" />
+                type="password"
+                name="password" 
+            />
         </div>
-        <router-link to="/">
-            <button @click="onSubmitClicked">Зарегистрироваться</button>
-        </router-link>
+        <button type="submit">Зарегистрироваться</button>
         </form>
     </div>
 </template>
 
 <script>
-
+import User from '@/models/user'
 export default {
     name: 'RegForm',
     props: {},
     data: () => ({
-        user: {
-            name: '',
-            email: '',
-            pass: ''
-        }
+        user: new User('', '', '')
+        // {
+        //     name: '',
+        //     email: '',
+        //     pass: ''
+        // }
     }),
+    computed: {
+        loggedIn() {
+        console.log(this.$store.state.auth.status.loggedIn)
+        return this.$store.state.auth.status.loggedIn;
+        }
+    },
+    mounted() {
+        if (this.loggedIn) {
+        this.$router.push('/profile');
+        }
+    },
     methods: {
-        onSubmitClicked() {
-            this.$emit('create-user', {
-                name: this.user.name,
-                email: this.user.email,
-                pass: this.user.pass
-            });
+        handleRegister() {
+            this.$store.dispatch('auth/register', this.user).then(
+            () => {
+              this.$router.push('/');
+                },
+            );
+            // this.$emit('create-user', {
+            //     name: this.user.name,
+            //     email: this.user.email,
+            //     pass: this.user.pass
+            // });
         }
     }
 };
