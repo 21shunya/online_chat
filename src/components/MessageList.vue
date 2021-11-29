@@ -36,13 +36,13 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-    .msg{
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        flex-shrink: 1;
-        overflow-y: auto;
-    }
+    // .msg{
+    //     display: flex;
+    //     flex-direction: column;
+    //     flex: 1;
+    //     flex-shrink: 1;
+    //     overflow-y: auto;
+    // }
 
 /* полоса прокрутки (скроллбар) */    
     ::-webkit-scrollbar {

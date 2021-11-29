@@ -1,14 +1,14 @@
 <template>
     <div class="chat">
-        <!-- <div class="a"> -->
         <TopOfChart />
         <MessageList 
+            v-if="messageList && messageList.length"
             :messages="messageList"
         />
+        <div v-else class="msg">У вас пока нет сообщений</div>
         <SendMessage 
         @send_Msg="fetchMessages"
         />
-        <!-- </div> -->
     </div>
 </template>
 
@@ -38,7 +38,6 @@ export default{
     if (!this.loggedIn) {
       this.$router.push('/login');
     }
-
         this.fetchMessages()
     },
     methods: {
@@ -60,6 +59,15 @@ export default{
         width: 40%;
         height: 100vh;
         
+    }
+    .msg{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        flex-shrink: 1;
+        overflow-y: auto;
+        justify-content: center;
+        color: white;
     }
     .a{
         display: flex; 

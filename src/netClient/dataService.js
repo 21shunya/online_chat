@@ -1,8 +1,17 @@
 import http from '@/netClient/config.js';
 
 export async function fetchMessages() {
-    const response = await http.get('/msg');
-    return response?.data?.list ?? [];
+    try {
+        const response = await http.get('/chat/messages', {
+            headers : {
+                'x-access-token': localStorage.accessToken
+            }
+        });
+        return response?.data?.list ?? [];
+    }  catch (error) {
+        console.error({ error });
+        throw error;
+    }
 }
 
 export async function fetchUser(id) {
