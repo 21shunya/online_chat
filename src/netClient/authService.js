@@ -1,6 +1,6 @@
 import http from '@/netClient/config.js';
 
-export async function doRegister(email, login, password, ) {
+export async function doRegister(email, login, password) {
     try {
         const response = await http.post('/auth/registration', {
             email,
@@ -24,7 +24,7 @@ export async function doLogin(login, password) {
         const { accessToken } = JSON.parse(user)
         localStorage.user = user;
         localStorage.accessToken = accessToken;
-        return localStorage.accessToken, localStorage.user
+        return {token: localStorage.accessToken, user: localStorage.user}
       } catch (error) {
         console.error({ error });
         throw error;

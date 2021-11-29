@@ -60,7 +60,7 @@ export default {
                     password: this.password.trim()
                 });
                 if (response){
-                   this.$router.push('/chat');
+                   this.$router.push('/login');
                 }
             } catch (error) {
                 console.error({ error })

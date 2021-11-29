@@ -1,4 +1,4 @@
-import { doLogin, doLogout } from "../netClient/authService";
+import { doLogin, doLogout, doRegister } from "../netClient/authService";
 
 
 const user = localStorage.getItem('user');
@@ -19,6 +19,7 @@ export const auth = {
         )
         commit('loginSuccess', user);
         commit('setToken', token);
+        return token
       } catch (error) {
         commit('loginFailure');
         console.error({ error });
@@ -39,7 +40,7 @@ export const auth = {
 
   async doRegister({commit}, {login, email, password}) {
     try {
-        const response = await this.doRegister(
+        const response = await doRegister(
           login,
           email,
           password
