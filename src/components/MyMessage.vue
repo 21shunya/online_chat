@@ -1,9 +1,9 @@
 <template>
     <div class="wrapper">
-        <div id="text">{{ msg.text }}</div>
-        <TimeOfMsg
+        <div id="text">{{ msg.message }}</div>
+        <!-- <TimeOfMsg
             :msg="msg"
-        />     
+        />      -->
     </div>
 </template>
 
@@ -18,9 +18,9 @@ export default{
             required: true
         }
     },
-    components:{
-        TimeOfMsg
-    }
+    // components:{
+    //     TimeOfMsg
+    // }
 }
 </script>
 

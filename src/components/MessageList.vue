@@ -4,11 +4,11 @@
             class="list"
             v-for="msg in messages"
             :key="msg.id">
-            <DateOfMsgs 
+            <!-- <DateOfMsgs 
                 :msg="msg"
-            />
+            /> -->
             <MyMessage
-                v-if="msg.senderId == 1"
+                v-if="msg.userId == userId"
                 :msg="msg"
             />
             <OtherMessages
@@ -32,6 +32,18 @@ export default{
         OtherMessages,
         DateOfMsgs
     },
+    data: () => ({
+        userId: ''
+    }),
+    methods: {
+        getUserId() {
+            const { userId } = JSON.parse(localStorage.getItem('user'))
+            this.userId = userId
+        }
+    },
+    mounted() {
+        this.getUserId()
+    }
 }
 </script>
 

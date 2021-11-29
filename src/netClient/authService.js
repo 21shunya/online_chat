@@ -40,7 +40,8 @@ export async function doLogout() {
             'x-access-token': localStorage.accessToken
           }
         });
-        localStorage.removeItem('user', 'accessToken');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('user');
         return response.data;
     } catch (error) {
         console.error({ error })

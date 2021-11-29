@@ -1,18 +1,15 @@
 <template>
     <div class="wrapper">
-        <div class="info login">{{ user.login }}</div>
+        <div class="info login"> name </div>
         <div class="txt-time">
-            <div id="text">{{ msg.text }}</div>
-            <TimeOfMsg
-                :msg="msg"
-            />
+            <div id="text">{{ msg.message }}</div>
         </div>
     </div>
 </template>
 
 <script>
 import TimeOfMsg from '@/components/TimeOfMsg.vue'
-import { fetchUser } from '@/netClient/dataService'
+// import { fetchUser } from '@/netClient/dataService'
 
 export default{
     name: 'Message',
@@ -22,21 +19,21 @@ export default{
             required: true
         }
     },
-    components:{
-        TimeOfMsg
-    },
-    data: () => ({
-        user: {},
-    }),
-    mounted() {
-        this.fetchUser();
-    },
+    // components:{
+    //     TimeOfMsg
+    // },
+    // data: () => ({
+    //     user: {},
+    // }),
+    // mounted() {
+    //     this.fetchUser();
+    // },
     
-    methods: {
-        async fetchUser(){
-            this.user = await fetchUser(this.msg.senderId)
-        },
-    }
+    // methods: {
+    //     async fetchUser(){
+    //         this.user = await fetchUser(this.msg.senderId)
+    //     },
+    // }
 }
 </script>
 

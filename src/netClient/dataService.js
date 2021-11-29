@@ -7,7 +7,7 @@ export async function fetchMessages() {
                 'x-access-token': localStorage.accessToken
             }
         });
-        return response?.data?.list ?? [];
+        return response?.data?.messageList ?? [];
     }  catch (error) {
         console.error({ error });
         throw error;
@@ -25,16 +25,21 @@ export async function fetchUser(id) {
 
 }
 
-export async function sendMsg({senderId, text, attachments, datetime}) {
+export async function sendMsg(message) {
     // console.log({senderId, text, attachments, datetime})
     try {
-        const response = await http.post('/msg', {
-            senderId,
-            text,
-            attachments,
-            datetime
-        });
-        if (! response?.data.result) console.log("msg doesn't send")    
+        const response = await http.post('/chat/messages/send', {
+            message
+        },
+        {
+            headers : {
+                'Content-Type': 'application/json',
+                'x-access-token': localStorage.accessToken
+            }
+            
+        })
+        if (! response?.data.result) console.log("msg doesn't send")  
+        console.log(response?.data)  
         return response?.data ?? {};
     } catch (error) {
         console.error({ error });

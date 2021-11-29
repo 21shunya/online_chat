@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container" @keyup.enter="onSubmitClicked">
-            <input type="text" v-model="text" placeholder="Message..."/>
+            <input type="text" v-model="message" placeholder="Message..."/>
             <button @click="onSubmitClicked"><img src="@/data/send.png"></button>
         </div>
     </div>
@@ -14,20 +14,17 @@ export default{
     name: 'SendMessage',
     props: {},
     data: () => ({
-        text: ''
+        message: ''
     }),
     methods: {
         async onSubmitClicked() {
             if(this.text !== '') {
-                const send_Msg = await sendMsg({
-                    senderId: 1,
-                    text: this.text,
-                    attachments: [],
-                    datetime: new Date().toISOString()
-                });
+                const send_Msg = await sendMsg(
+                    this.message.trim()
+                );
                 this.text=''
                 //$event.preventDefault();
-                this.$emit('send_Msg',send_Msg)
+                this.$emit('send_Msg', send_Msg)
             }
         }
     }

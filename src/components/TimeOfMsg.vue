@@ -18,9 +18,9 @@ export default{
         this.getTime();
     },
     methods: {
-        async getTime(){
-            this.time = this.msg.datetime.split('T')[1].split(':',2).join(':') 
-        }
+        // async getTime(){
+        //     this.time = this.msg.datetime.split('T')[1].split(':',2).join(':') 
+        // }
     }
 }
 </script>
