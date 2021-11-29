@@ -7,7 +7,7 @@
         />
         <div v-else class="msg">У вас пока нет сообщений</div>
         <SendMessage 
-        @send_Msg="fetchMessages"
+            @send_Msg="fetchMessages"
         />
     </div>
 </template>
@@ -16,7 +16,8 @@
 import TopOfChart from '@/components/TopOfChat.vue'
 import MessageList from '@/components/MessageList.vue'
 import SendMessage from '@/components/SendMessage.vue'
-import { fetchMessages } from '@/netClient/dataService.js';
+import { fetchMessages, sendMsg } from '@/netClient/dataService.js';
+import { mapState } from 'vuex'
 
 
 export default{
@@ -30,12 +31,10 @@ export default{
         messageList: []
     }),
     computed: {
-      loggedIn() {
-        return this.$store.state.auth.status.loggedIn;
-      }
+        ...mapState('auth', ['status']),
   },
   mounted() {
-    if (!this.loggedIn) {
+    if (!this.status.loggedIn) {
       this.$router.push('/login');
     }
         this.fetchMessages()
@@ -48,6 +47,9 @@ export default{
             } finally{
             }
         },
+        async sendMsg(){
+            
+        }
     },
 };
 </script>

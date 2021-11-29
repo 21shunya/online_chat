@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
     name: 'RegForm',
@@ -40,13 +40,10 @@ export default {
         password: ''
     }),
     computed: {
-        loggedIn() {
-        console.log(this.$store.state.auth.status.loggedIn)
-        return this.$store.state.auth.status.loggedIn;
-        }
+        ...mapState('auth', ['status']),
     },
     mounted() {
-        if (this.loggedIn) {
+        if (this.status.loggedIn) {
         this.$router.push('/chat');
         }
     },

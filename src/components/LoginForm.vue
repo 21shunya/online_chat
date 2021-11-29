@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
     name: 'LoginForm',
@@ -25,12 +25,10 @@ export default {
         password: ''
     }),
     computed:{
-        loggedIn() {
-        return this.$store.state.auth.status.loggedIn;
-        }
+        ...mapState('auth',['status']),
     },
     created() {
-    if (this.loggedIn) {
+    if (this.status.loggedIn) {
       this.$router.push('/chat');
         }
     },
