@@ -23,6 +23,7 @@ export const auth = {
         commit('loginSuccess', user);
         return localStorage.accessToken 
       } catch (error) {
+        commit('loginFailure');
         console.error({ error });
         throw error;
       }
@@ -32,10 +33,10 @@ export const auth = {
       try {
         const response = await http.get('/auth/logout',
         {
-            headers : {
-                'Content-Type': 'application/json',
-                'x-access-token': localStorage.accessToken
-            }
+          headers : {
+            'Content-Type': 'application/json',
+            'x-access-token': localStorage.accessToken
+          }
         });
         commit('logout');
         localStorage.removeItem('user', 'accessToken');
@@ -44,7 +45,23 @@ export const auth = {
         console.error({ error })
         throw error;
     }
-  }
+  },
+
+  async doRegister({commit}, {login, email, password}) {
+    try {
+        const response = await http.post('/auth/registration', {
+          login,
+          email,
+          password
+        });
+        commit('registerSuccess');
+        return response.data;
+    } catch (error) {
+      commit('registerFailure');
+      console.error({ error })
+      throw error;
+    }
+} 
   
     // login({ commit }, user) {
     //   return authService.login(user).then(

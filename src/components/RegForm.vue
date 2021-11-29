@@ -4,21 +4,21 @@
         <div class="fields">
             <label for="login">Login</label>
             <input 
-                v-model="user.login"
+                v-model="login"
                 type="text" 
                 name="login"
             />
             <div class="indented_box">
                 <label for="email">Email</label>
                 <input 
-                    v-model="user.email"
+                    v-model="email"
                     type="email" 
                     name="email"
                 />
             </div>
             <label for="password">Password</label>
             <input 
-                v-model="user.password"
+                v-model="password"
                 type="password"
                 name="password" 
             />
@@ -29,17 +29,15 @@
 </template>
 
 <script>
-import User from '@/models/user'
+import { mapActions } from 'vuex'
+
 export default {
     name: 'RegForm',
     props: {},
     data: () => ({
-        user: new User('', '', '')
-        // {
-        //     name: '',
-        //     email: '',
-        //     pass: ''
-        // }
+        login: '',
+        email: '',
+        password: ''
     }),
     computed: {
         loggedIn() {
@@ -49,22 +47,25 @@ export default {
     },
     mounted() {
         if (this.loggedIn) {
-        this.$router.push('/profile');
+        this.$router.push('/chat');
         }
     },
     methods: {
-        handleRegister() {
-            this.$store.dispatch('auth/register', this.user).then(
-            () => {
-              this.$router.push('/');
-                },
-            );
-            // this.$emit('create-user', {
-            //     name: this.user.name,
-            //     email: this.user.email,
-            //     pass: this.user.pass
-            // });
-        }
+        ...mapActions('auth', ['doRegister']),
+        async handleRegister() {
+            try{
+                const response = await this.doRegister({
+                    login: this.login.trim(),
+                    email: this.email.trim(),
+                    password: this.password.trim()
+                });
+                if (response){
+                   this.$router.push('/chat');
+                }
+            } catch (error) {
+                console.error({ error })
+            }
+        },
     }
 };
 </script>
