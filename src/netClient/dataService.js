@@ -1,13 +1,13 @@
-import axios from '@/axios';
+import http from '@/netClient/config.js';
 
 export async function fetchMessages() {
-    const response = await axios.get('/msg');
+    const response = await http.get('/msg');
     return response?.data?.list ?? [];
 }
 
 export async function fetchUser(id) {
     try {
-        const response = await axios.get('/user/' + id);
+        const response = await http.get('/user/' + id);
         return response?.data ?? {};
     } catch (error) {
         console.error({ error });
@@ -19,7 +19,7 @@ export async function fetchUser(id) {
 export async function sendMsg({senderId, text, attachments, datetime}) {
     // console.log({senderId, text, attachments, datetime})
     try {
-        const response = await axios.post('/msg', {
+        const response = await http.post('/msg', {
             senderId,
             text,
             attachments,

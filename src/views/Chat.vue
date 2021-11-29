@@ -16,8 +16,7 @@
 import TopOfChart from '@/components/TopOfChat.vue'
 import MessageList from '@/components/MessageList.vue'
 import SendMessage from '@/components/SendMessage.vue'
-import messages from '@/data/messages.json'
-import { fetchMessages } from '@/service/dataService';
+import { fetchMessages } from '@/netClient/dataService.js';
 
 
 export default{

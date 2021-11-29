@@ -42,7 +42,6 @@ export default {
                         login: this.login.trim(),
                         password: this.password.trim()
                 });
-                    console.warn({token})
                     if (token){
                         this.$router.push('/chat');
                     }

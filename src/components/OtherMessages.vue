@@ -12,7 +12,7 @@
 
 <script>
 import TimeOfMsg from '@/components/TimeOfMsg.vue'
-import { fetchUser } from '@/service/dataService'
+import { fetchUser } from '@/netClient/dataService'
 
 export default{
     name: 'Message',

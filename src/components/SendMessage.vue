@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {sendMsg} from '@/service/dataService';
+import {sendMsg} from '@/netClient/dataService';
 
 export default{
     name: 'SendMessage',
