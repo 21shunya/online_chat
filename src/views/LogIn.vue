@@ -9,7 +9,6 @@
 
 <script>
 import LoginForm from '@/components/LoginForm.vue';
-import users from '@/data/users.json';
 
 export default {
   name: 'LogIn',

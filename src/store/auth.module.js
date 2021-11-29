@@ -1,10 +1,11 @@
-import http from "@/netClient/config.js";
+import { doLogin, doLogout } from "../netClient/authService";
 
 
 const user = localStorage.getItem('user');
+const token = localStorage.getItem('accessToken')
 const initialState = user
-  ? { status: { loggedIn: true }, user }
-  : { status: { loggedIn: false }, user: null };
+  ? { status: { loggedIn: true }, user, token }
+  : { status: { loggedIn: false }, user: null, token:null };
 
 export const auth = {
   namespaced: true,
@@ -12,16 +13,12 @@ export const auth = {
   actions: {
     async doLogin({commit}, {login, password}) {
       try {
-        const response = await http.post('/auth/login', { 
+        const { token, user} = await doLogin( 
           login,
           password
-        })
-        const user = JSON.stringify(response.data)
-        const { accessToken } = JSON.parse(user)
-        localStorage.user = user;
-        localStorage.accessToken = accessToken;
+        )
         commit('loginSuccess', user);
-        return localStorage.accessToken 
+        commit('setToken', token);
       } catch (error) {
         commit('loginFailure');
         console.error({ error });
@@ -31,16 +28,9 @@ export const auth = {
 
     async doLogout({commit},) {
       try {
-        const response = await http.get('/auth/logout',
-        {
-          headers : {
-            'Content-Type': 'application/json',
-            'x-access-token': localStorage.accessToken
-          }
-        });
+        const response = await doLogout()
         commit('logout');
-        localStorage.removeItem('user', 'accessToken');
-        return response.data;
+        return response;
     } catch (error) {
         console.error({ error })
         throw error;
@@ -49,13 +39,13 @@ export const auth = {
 
   async doRegister({commit}, {login, email, password}) {
     try {
-        const response = await http.post('/auth/registration', {
+        const response = await this.doRegister(
           login,
           email,
           password
-        });
+        );
         commit('registerSuccess');
-        return response.data;
+        return response;
     } catch (error) {
       commit('registerFailure');
       console.error({ error })
@@ -98,6 +88,9 @@ export const auth = {
     // }
   },
   mutations: {
+    setToken(state, token) {
+      state.token = token
+    },
     loginSuccess(state, user) {
       state.status.loggedIn = true;
       state.user = user;
