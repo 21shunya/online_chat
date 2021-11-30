@@ -5,7 +5,7 @@
             v-if="messageList && messageList.length"
             :messages="messageList"
         />
-        <div v-else class="msg">У вас пока нет сообщений</div>
+        <div v-else class="emtyList">У вас пока нет сообщений</div>
         <SendMessage 
             @send_Msg="fetchMessages"
         />
@@ -42,7 +42,8 @@ export default{
     methods: {
         async fetchMessages() {
             try {
-                this.messageList = await fetchMessages();
+                const messageList = await fetchMessages();
+                this.messageList = messageList.reverse()
             } catch (error) {
             } finally{
             }
@@ -58,22 +59,13 @@ export default{
     .chat{
         display: flex;
         flex-direction: column;
-        width: 40%;
         height: 100vh;
-        
     }
-    .msg{
+    .emptyList {
         display: flex;
         flex-direction: column;
         flex: 1;
         flex-shrink: 1;
-        overflow-y: auto;
         justify-content: center;
-        color: white;
-    }
-    .a{
-        display: flex; 
-        flex-direction: column;
-        height: 100vh;
     }
 </style>

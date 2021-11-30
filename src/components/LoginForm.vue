@@ -6,7 +6,7 @@
             <input v-model="password" type="password" placeholder="password"/>
         </div>
         <div class="btn">
-            <router-link to="/reg">
+            <router-link to="/registration">
                 <button id="reg">Регистрация</button>
             </router-link>
             <button id='in' type="submit">Войти</button>

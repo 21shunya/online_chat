@@ -22,7 +22,7 @@ export default{
                 const send_Msg = await sendMsg(
                     this.message.trim()
                 );
-                this.text=''
+                this.message = ''
                 //$event.preventDefault();
                 this.$emit('send_Msg', send_Msg)
             }
@@ -39,7 +39,7 @@ export default{
         justify-content: space-between;
         input{
             width: 92%;
-            height: 35px;
+            height: 30px;
             padding: 0px 10px;
             border: none;
             border-radius: 15px;

@@ -8,15 +8,17 @@ const routes = [
     path: '/login',
     name: 'Login',
     meta:{
-      title: 'Login'
+      title: 'Login',
+      layout: 'card-layout'
     },
     component: () => import('@/views/LogIn.vue')
   },
   {
-    path: '/reg',
-    name: 'Reg',
+    path: '/registration',
+    name: 'Registration',
     meta:{
-      title: 'registration'
+      title: 'registration',
+      layout: 'card-layout'
     },
     component: () => import('@/views/Registration.vue')
   },
@@ -24,7 +26,7 @@ const routes = [
     path: '/chat',
     name: 'Chat',
     meta:{
-      title: 'chat'
+      title: 'chat',
     },
     component: () => import('@/views/Chat.vue')
   },
@@ -32,7 +34,8 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     meta:{
-      title: 'profile'
+      title: 'profile',
+      layout: 'card-layout'
     },
     component: () => import('@/views/Profile.vue')
   },

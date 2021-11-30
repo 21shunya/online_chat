@@ -1,5 +1,5 @@
 <template>
-    <div class="msg">
+    <div class="msgs">
         <div
             class="list"
             v-for="msg in messages"
@@ -39,7 +39,7 @@ export default{
         getUserId() {
             const { userId } = JSON.parse(localStorage.getItem('user'))
             this.userId = userId
-        }
+        },
     },
     mounted() {
         this.getUserId()
@@ -48,13 +48,18 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-    // .msg{
-    //     display: flex;
-    //     flex-direction: column;
-    //     flex: 1;
-    //     flex-shrink: 1;
-    //     overflow-y: auto;
-    // }
+    
+.msgs{
+    display: flex;
+    flex-direction: column-reverse;
+    flex: 1;
+    flex-shrink: 1;
+    margin: 5px;
+    overflow-y: auto;
+}
+// .msgs:hover{
+//     justify-content: flex-end;
+// }
 
 /* полоса прокрутки (скроллбар) */    
     ::-webkit-scrollbar {
@@ -70,7 +75,6 @@ export default{
 ::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid;
-   
     border-radius: 10em;
 }
 
@@ -79,13 +83,15 @@ export default{
    border-color: rgba(255, 255, 255, 0.5);
 }
     .list{
-        
         display: flex;
         flex-direction: column;
+        align-content: flex-end;
+        flex: 1;
         margin: 5px;
         font-size: 17px;
         color: #2F2F2F;
     }
+
     /////// стили компонентов сообщений
     .wrapper{
     max-width: 75%;

@@ -30,7 +30,7 @@ export default{
     // },
     
     // methods: {
-    //     async fetchUser(){
+    //     async fetchUser() {
     //         this.user = await fetchUser(this.msg.senderId)
     //     },
     // }

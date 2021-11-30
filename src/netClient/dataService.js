@@ -14,19 +14,7 @@ export async function fetchMessages() {
     }
 }
 
-export async function fetchUser(id) {
-    try {
-        const response = await http.get('/user/' + id);
-        return response?.data ?? {};
-    } catch (error) {
-        console.error({ error });
-        throw error;
-    }
-
-}
-
 export async function sendMsg(message) {
-    // console.log({senderId, text, attachments, datetime})
     try {
         const response = await http.post('/chat/messages/send', {
             message
@@ -38,8 +26,18 @@ export async function sendMsg(message) {
             }
             
         })
-        if (! response?.data.result) console.log("msg doesn't send")  
+        if (! response?.data) console.log("msg doesn't send")  
         console.log(response?.data)  
+        return response?.data ?? {};
+    } catch (error) {
+        console.error({ error });
+        throw error;
+    }
+}
+
+export async function fetchUser(id) {
+    try {
+        const response = await http.get('user/' + id);
         return response?.data ?? {};
     } catch (error) {
         console.error({ error });
