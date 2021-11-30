@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- <span>ID: {{currentUser.id}}</span> -->
-    <button @click.prevent="logout">Logout</button>
+    <button class="secondary-btn" @click.prevent="logout">Logout</button>
   </div>
 </template>
 
@@ -32,23 +31,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-button {
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-family: Mulish;
-    font-size: 20px;    
-    background: transparent;
-    border: 1px solid #9D6FFF;
-    color: #9D6FFF;
-}
-
-span {
-  font-family: Lora;
-  font-size: 39px;
-  margin: 50px;
-  color: #FFFFFF;
-  font-weight: bold;
-}
-</style>

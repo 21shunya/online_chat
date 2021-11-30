@@ -1,0 +1,119 @@
+.card-layout-border {
+    border-radius: 15px;
+    background: linear-gradient(-45deg, #FF0000,#ECE319,#FE7D06,#E40000,#DB1ADF,#7100CA,#1434DB,#16ECDF,#11EA0C,#FFF502,#00D94A);
+    padding: 2px;
+    box-shadow: 4px 4px 20px 6px #000000;
+}
+  
+.card-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #20213A;
+    border-radius: 15px;
+    padding: 10px 25px;
+}
+  
+#title {
+    font-family: Lora;
+    font-size: 39px;
+    margin: 50px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.card-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+}
+
+.f-login {
+    margin: 30px 0px;
+}
+
+.f-reg {
+    margin: 50px 0px;
+}
+
+/* регистрация/профиль */
+label {
+    align-self: flex-start;
+    font-family: 'Noto Sans';
+    color: #888888;
+    font-size: 17px;
+    padding: 0px 0px 13px 10px;
+}
+
+/* регистрация */
+.indented_box {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0px;
+}
+
+input{
+    border-radius: 15px;
+    border: 0px;
+    height: 35px;
+    width: 300px;
+    color: black;
+    font-size: 17px;
+}
+
+.in-login {
+    margin: 10px 0px;
+    /* отступ текста в полях */
+    padding: 0px 15px; 
+}
+::placeholder{
+        color: #888888;
+}
+
+
+/* кнопки */
+.btns-login {
+    display: flex;
+    padding: 0px;
+    width: 314px;
+    margin: 30px 10px;
+    justify-content: space-between;
+}
+
+.btns-register{
+    justify-content: center;
+    margin: 50px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 20px;  
+}
+
+.primary-btn {
+    background: linear-gradient(110.86deg, #00D94A 9.46%, #FFD602 95.13%);
+    border: 0px;
+    color: #20213A;
+}
+
+.primary-btn:hover {
+    background: #00D94A;
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 1px solid #9D6FFF;
+    color: #9D6FFF;   
+}
+.secondary-btn:hover{
+background:#9d6fff1e;
+}
+.secondary-btn:active{
+background: #9D6FFF 50%;
+color: #20213A;
+}
