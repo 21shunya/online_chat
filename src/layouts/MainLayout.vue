@@ -1,17 +1,11 @@
 <template>
-      <div class="MainLayout">
+      <div class="main-layout">
           <router-view />
       </div>
 </template>
 
 <script>
 export default {
-    name: 'MainLayout',
+    name: 'main-layout',
 }
 </script>
-
-<style scoped>
-    .MainLayout {
-        width: 45%;
-    }
-</style>

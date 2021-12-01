@@ -30,11 +30,11 @@ export default {
 
 <style lang="scss">
 body {
- margin: 0;
  background: #20213A;
 }
 
 #app {
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
   display: flex;
   justify-content: center;

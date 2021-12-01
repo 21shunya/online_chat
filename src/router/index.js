@@ -27,6 +27,7 @@ const routes = [
     name: 'Chat',
     meta:{
       title: 'chat',
+      layout: 'main-layout'
     },
     component: () => import('@/views/Chat.vue')
   },

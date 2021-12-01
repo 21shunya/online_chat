@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './styles/cards.css'
+import './styles/chat.css'
 
 Vue.config.productionTip = false
 

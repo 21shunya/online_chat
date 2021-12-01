@@ -55,17 +55,4 @@ export default{
 };
 </script>
 
-<style lang="scss" scoped>
-    .chat{
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-    }
-    .emptyList {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        flex-shrink: 1;
-        justify-content: center;
-    }
-</style>
+
