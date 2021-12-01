@@ -1,8 +1,8 @@
 <template>
     <div class="header-container">
         <div class="header-btns">
-            <button class="h-btn" @click="goToProfile"><img src="@/data/profile.png"></button>
-            <button class="h-btn"><img src="@/data/Search.png"></button>
+            <button class="chat-img-btn" @click="goToProfile"><img src="@/data/profile.png"></button>
+            <button class="chat-img-btn"><img src="@/data/Search.png"></button>
         </div>
     </div>
 </template>

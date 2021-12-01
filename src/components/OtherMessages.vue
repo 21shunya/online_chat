@@ -1,8 +1,8 @@
 <template>
-    <div class="wrapper">
-        <div class="info login"> name </div>
+    <div class="msg-wrapper other-msg">
+        <div class="msg-info login-in-msg"> name </div>
         <div class="txt-time">
-            <div id="text">{{ msg.message }}</div>
+            <div class="msg-text">{{ msg.message }}</div>
         </div>
     </div>
 </template>
@@ -38,23 +38,9 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-.wrapper{
-    align-self: flex-start;
-    flex-direction: column;
-    background: #A6FF72;
-    align-items: flex-start;
-}
+
 .txt-time{
     display: flex;
 }
-.info{
-    font-size: 12px;
-    color: #888888;    
-}
-.login{    
-    padding: 0px 0px 5px 0px;  
-}
-#text{
-    padding: 0px 20px 0px 0px;
-}             
+          
 </style>

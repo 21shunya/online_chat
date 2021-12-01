@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="container" @keyup.enter="onSubmitClicked">
-            <input type="text" v-model="message" placeholder="Message..."/>
-            <button @click="onSubmitClicked"><img src="@/data/send.png"></button>
+        <div class="send-form" @keyup.enter="onSubmitClicked">
+            <input class="send-field" type="text" v-model="message" placeholder="Message..."/>
+            <button class="chat-img-btn" @click="onSubmitClicked"><img src="@/data/send.png"></button>
         </div>
     </div>
 </template>
@@ -31,30 +31,3 @@ export default{
 };
 </script>
 
-<style lang="scss" scoped>
-    .container{
-        padding: 0px 0px 30px 0px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        input{
-            width: 92%;
-            height: 30px;
-            padding: 0px 10px;
-            border: none;
-            border-radius: 15px;
-            font-size: 17px;
-            ::placeholder{
-                color: #888888;
-            }
-            color: black;
-        }
-        button{
-            background: transparent;
-            border: none;
-        }
-        img{
-            height: 25px;
-        }
-    }
-</style>

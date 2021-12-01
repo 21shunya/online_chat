@@ -7,15 +7,86 @@
     flex-direction: column;
     height: 100vh;
 }
-.emptyList {
+.msg-conteiner {
     display: flex;
-    flex-direction: column;
     flex: 1;
     flex-shrink: 1;
-    justify-content: center;
 }
 
-/* top of chart */
+#empty{
+    flex-direction: column;
+    justify-content: center;
+}
+#full{
+    flex-direction: column-reverse;
+    margin: 5px;
+    overflow-y: auto;
+}
+
+/* ----------------list of msgs---------------------- */
+::-webkit-scrollbar { /* полоса прокрутки (скроллбар) */  
+    width: 7px; /* ширина для вертикального скролла */
+    background-color: transparent;
+    
+}
+
+::-webkit-scrollbar-thumb { /* ползунок скроллбара */
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid;
+    border-radius: 10em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+   background-color: #20213A;
+   border-color: rgba(255, 255, 255, 0.5);
+}
+
+.msg-list{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    flex: 1;
+    margin: 5px;
+    font-size: 17px;
+    color: #2F2F2F;
+}
+
+/* стили компонентов сообщений */
+.msg-wrapper{ 
+    max-width: 75%;
+    display: flex;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.msg-text{
+    padding: 0px 20px 0px 0px;
+}
+
+.msg-info{
+    font-size: 12px;
+    color: #888888;    
+}
+
+/* мои сообщения */
+.my-msg{
+    align-self: flex-end;
+    background: #FFFEC7;
+}
+
+/* чужие сообщения */
+.other-msg{
+    align-self: flex-start;
+    flex-direction: column;
+    background: #A6FF72;
+    align-items: flex-start;
+}
+
+.login-in-msg{
+    padding: 0px 0px 5px 0px;
+}
+
+/* -----------------------top of chart------------------------------- */
 .header-container{
     padding-top: 20px;
 }
@@ -31,12 +102,30 @@
     border-image-slice: 1;
 }
 
-.h-btn{
+.chat-img-btn{
     background: transparent;
     border: none;
 }
 
 img{
     height: 25px;
+}
+
+/* -----------------------send msgs------------------------------- */
+.send-form{
+    padding: 0px 0px 30px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.send-field{
+    width: 92%;
+    height: 30px;
+    padding: 0px 10px;
+    border: none;
+    border-radius: 15px;
+    font-size: 17px;
+    color: black;
 }
 

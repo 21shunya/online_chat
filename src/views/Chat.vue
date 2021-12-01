@@ -5,7 +5,7 @@
             v-if="messageList && messageList.length"
             :messages="messageList"
         />
-        <div v-else class="emtyList">У вас пока нет сообщений</div>
+        <div v-else class="msg-conteiner" id="empty">У вас пока нет сообщений</div>
         <SendMessage 
             @send_Msg="fetchMessages"
         />

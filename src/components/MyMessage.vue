@@ -1,6 +1,6 @@
 <template>
-    <div class="wrapper">
-        <div id="text">{{ msg.message }}</div>
+    <div class="msg-wrapper my-msg">
+        <div class="msg-text">{{ msg.message }}</div>
         <!-- <TimeOfMsg
             :msg="msg"
         />      -->
@@ -23,17 +23,3 @@ export default{
     // }
 }
 </script>
-
-<style lang="scss" scoped>
-.wrapper{
-    align-self: flex-end;
-    background: #FFFEC7;
-}
-#text{
-    padding: 0px 20px 0px 0px;
-}
-.info{
-    font-size: 12px;
-    color: #888888;    
-}
-</style>
