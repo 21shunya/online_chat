@@ -35,9 +35,14 @@ export async function sendMsg(message) {
     }
 }
 
-export async function fetchUser(id) {
+export async function fetchUser() {
     try {
-        const response = await http.get('user/' + id);
+        const response = await http.get('/user/info', 
+        {
+            headers : {
+                'x-access-token': localStorage.accessToken
+            }
+        });
         return response?.data ?? {};
     } catch (error) {
         console.error({ error });
