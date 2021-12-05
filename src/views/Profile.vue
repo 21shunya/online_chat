@@ -21,8 +21,8 @@
         name="login"
       />
     </div>
-    <div class="btns">
-      <button class="secondary-btn">Настройки</button>
+    <div class="btns-profile">
+      <button class="secondary-btn settings-btn">Настройки</button>
       <button class="primary-btn" @click.prevent="logout">Выйти</button>
     </div>
   </div>
@@ -72,6 +72,6 @@ export default {
 
 <style scoped>
  img{
-   height: 70px
+   height: 90px
  }
 </style>
