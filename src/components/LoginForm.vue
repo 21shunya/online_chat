@@ -2,8 +2,8 @@
     <div>
         <form class="card-form" @submit.prevent="onFormSubmit">
         <div class="fields f-login">
-            <input class="in-login" v-model="login" type="text" placeholder="login"/>
-            <input class="in-login" v-model="password" type="password" placeholder="password"/>
+            <input v-model="login" type="text" placeholder="login"/>
+            <input v-model="password" type="password" placeholder="password"/>
         </div>
         <div class="btns-login">
             <router-link to="/registration">

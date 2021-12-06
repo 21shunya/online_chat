@@ -1,26 +1,37 @@
 <template>
   <div>
-    <div id='title'>Профиль</div>
+    <button class="btn-img-exit" @click="goToChat">
+      <img class="img-exit" src="@/assets/exit-normal.svg"/>
+    </button>  
+    <div id='title'>
+      Профиль
+    </div>
     <div>
-      <img src="@/assets/profPhoto-default.svg"/>
+      <img class="profile-photo" src="@/assets/profPhoto-default.svg"/>
       <div>
         <button class="secondary-btn change-photo">Изменить</button>
       </div>
     </div>
-    <div class="fields">
-      <label for="login">Login</label>
-      <input 
-        v-model="user.login"
-        type="text" 
-        name="login"
-      />
-      <label for="email">Email</label>
-      <input 
-        v-model="user.email"
-        type="text" 
-        name="login"
-      />
-    </div>
+    <form class="fields f-reg" @keyup.enter="onSubmitClicked">
+      <div class="profile-field">
+        <label for="login">Login</label>
+        <input 
+          v-model="user.login"
+          class="inp-profile"
+          type="text" 
+          name="login"
+        />
+      </div>
+      <div class="profile-field">
+        <label for="email">Email</label>
+        <input 
+          v-model="user.email"
+          class="inp-profile"
+          type="text" 
+          name="login"
+        />
+      </div>
+    </form>
     <div class="btns-profile">
       <button class="secondary-btn settings-btn">Настройки</button>
       <button class="primary-btn" @click.prevent="logout">Выйти</button>
@@ -29,7 +40,7 @@
 </template>
 
 <script>
-import { fetchUser } from '@/netClient/dataService';
+import { fetchUser, updateUser } from '@/netClient/dataService';
 import { mapActions } from 'vuex';
 export default {
   name: 'Profile',
@@ -66,12 +77,20 @@ export default {
       } catch (error) {
       }
     },
+    async onSubmitClicked() {
+      try {
+        const response = await updateUser(
+          this.user.login.trim(), 
+          this.user.email.trim()
+        );
+        alert('данные изменены');
+      } catch (error) {
+      }
+    },
+    goToChat() {
+      this.$router.push("/chat")
+    }
   }
 };
 </script>
 
-<style scoped>
- img{
-   height: 90px
- }
-</style>

@@ -32,6 +32,13 @@
     padding: 0px;
 }
 
+.profile-field {
+    display: flex;
+    flex-direction: column;
+    /* padding: 0px; */
+    margin: 10px 0px;
+}
+
 .f-login {
     margin: 30px 0px;
 }
@@ -40,13 +47,14 @@
     margin: 50px 0px;
 }
 
+
 /* регистрация/профиль */
 label {
     align-self: flex-start;
     font-family: 'Noto Sans';
     color: #888888;
     font-size: 17px;
-    padding: 0px 0px 13px 10px;
+    padding: 0px 0px 3px 10px;
 }
 
 /* регистрация */
@@ -59,19 +67,24 @@ label {
 input{
     border-radius: 15px;
     border: 0px;
-    height: 30px;
+    height: 35px;
     width: 300px;
     color: black;
     font-size: 17px;
-}
-
-.in-login {
-    margin: 10px 0px;
-    /* отступ текста в полях */
+    margin-top: 10px;
     padding: 0px 15px; 
 }
+
 ::placeholder{
-        color: #888888;
+    color: #888888;
+}
+
+.inp-profile {
+    color: #888888;
+}
+
+.inp-profile:focus {
+    color: black;
 }
 
 
@@ -132,5 +145,26 @@ color: #20213A;
 
 .settings-btn {
     margin-bottom: 20px;
-
 }
+
+.btn-img-exit {
+    position: relative;
+    top: 20px;
+    left: 147px;
+    background: transparent;
+    border: none; 
+    padding: 0px;
+    border-radius: 0;
+}
+.img-exit {
+    height: 30px;
+}
+
+.img-exit:hover {
+    background: rgb(48, 45, 45);
+}
+
+.profile-photo {
+    height: 90px;
+}
+

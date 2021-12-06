@@ -37,7 +37,26 @@ export async function sendMsg(message) {
 
 export async function fetchUser() {
     try {
-        const response = await http.get('/user/info', 
+        const response = await http.get('/user/info',
+        {
+            headers : {
+                'Content-Type': 'application/json',
+                'x-access-token': localStorage.accessToken
+            }
+        });
+        return response?.data ?? {};
+    } catch (error) {
+        console.error({ error });
+        throw error;
+    }
+}
+
+export async function updateUser(login, email) {
+    try {
+        const response = await http.patch('/user/info', {
+            login,
+            email
+        }, 
         {
             headers : {
                 'x-access-token': localStorage.accessToken
