@@ -10,11 +10,15 @@
             <MyMessage
                 v-if="msg.userId == userId"
                 :msg="msg"
+                @showModal="showModal"
             />
             <OtherMessages
                 v-else 
                 :msg="msg"
             />
+            <div v-if="focus">
+                a
+            </div>
         </div>
     </div>
 </template>
@@ -40,6 +44,9 @@ export default{
             const { userId } = JSON.parse(localStorage.getItem('user'))
             this.userId = userId
         },
+        showModal() {
+            this.$emit('showModal')
+        }
     },
     mounted() {
         this.getUserId()

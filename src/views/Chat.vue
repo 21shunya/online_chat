@@ -4,10 +4,15 @@
         <MessageList 
             v-if="messageList && messageList.length"
             :messages="messageList"
+            @showModal="showModal"
         />
         <div v-else class="msg-conteiner" id="empty">У вас пока нет сообщений</div>
         <SendMessage 
             @send_Msg="fetchMessages"
+        />
+        <ModalTest 
+            v-show="isModalVisible"
+            @close="closeModal"
         />
     </div>
 </template>
@@ -16,6 +21,7 @@
 import TopOfChart from '@/components/TopOfChat.vue'
 import MessageList from '@/components/MessageList.vue'
 import SendMessage from '@/components/SendMessage.vue'
+import ModalTest from '@/components/ModalTest.vue'
 import { fetchMessages, sendMsg } from '@/netClient/dataService.js';
 import { mapState } from 'vuex'
 
@@ -25,10 +31,12 @@ export default{
     components:{
         TopOfChart,
         MessageList,
-        SendMessage
+        SendMessage,
+        ModalTest
     },
     data: () => ({
-        messageList: []
+        messageList: [],
+        isModalVisible: false,
     }),
     computed: {
         ...mapState('auth', ['status']),
@@ -50,7 +58,13 @@ export default{
         },
         async sendMsg(){
             
-        }
+        },
+        showModal() {
+            this.isModalVisible = true;
+        },
+        closeModal() {
+            this.isModalVisible = false;
+      }
     },
 };
 </script>

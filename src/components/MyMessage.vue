@@ -1,6 +1,8 @@
 <template>
     <div class="msg-wrapper my-msg">
-        <div class="msg-text">{{ msg.message }}</div>
+        <button class="msg-text" @click="showModal">
+            {{ msg.message }}
+        </button>
         <!-- <TimeOfMsg
             :msg="msg"
         />      -->
@@ -18,6 +20,11 @@ export default{
             required: true
         }
     },
+    methods: {
+        showModal() {
+            this.$emit('showModal')
+        }
+    }
     // components:{
     //     TimeOfMsg
     // }
