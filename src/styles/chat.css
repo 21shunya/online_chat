@@ -1,133 +1,234 @@
 .main-layout {
-    width: 45%;
+  width: 45%;
 }
 
-.chat{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 .msg-conteiner {
-    display: flex;
-    flex: 1;
-    flex-shrink: 1;
+  display: flex;
+  flex: 1;
+  flex-shrink: 1;
 }
 
-#empty{
-    flex-direction: column;
-    justify-content: center;
+#empty {
+  flex-direction: column;
+  justify-content: center;
 }
-#full{
-    flex-direction: column-reverse;
-    margin: 5px;
-    overflow-y: auto;
+#full {
+  flex-direction: column-reverse;
+  margin: 5px;
+  overflow-y: auto;
 }
 
 /* ----------------list of msgs---------------------- */
-::-webkit-scrollbar { /* полоса прокрутки (скроллбар) */  
-    width: 7px; /* ширина для вертикального скролла */
-    background-color: transparent;
-    
+::-webkit-scrollbar {
+  /* полоса прокрутки (скроллбар) */
+  width: 7px; /* ширина для вертикального скролла */
+  background-color: transparent;
 }
 
-::-webkit-scrollbar-thumb { /* ползунок скроллбара */
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 1px solid;
-    border-radius: 10em;
+::-webkit-scrollbar-thumb {
+  /* ползунок скроллбара */
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid;
+  border-radius: 10em;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-   background-color: #20213A;
-   border-color: rgba(255, 255, 255, 0.5);
+  background-color: #20213a;
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
-.msg-list{
-    display: flex;
-    flex-direction: column;
-    align-content: flex-end;
-    flex: 1;
-    margin: 5px;
-    font-size: 17px;
-    color: #2F2F2F;
+.msg-list {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  flex: 1;
+  margin: 5px;
+  font-size: 17px;
+  color: #2f2f2f;
 }
 
 /* стили компонентов сообщений */
-.msg-wrapper{ 
-    max-width: 75%;
-    display: flex;
-    border-radius: 20px;
-    padding: 5px 10px;
+.msg-wrapper {
+  max-width: 75%;
+  display: flex;
+  border-radius: 20px;
+  padding: 5px 10px;
 }
 
-.msg-text{
-    padding: 0px 20px 0px 0px;
-    border: none;
-    background: transparent;
+.msg-text {
+  padding: 0px 20px 0px 0px;
 }
 
-.msg-info{
-    font-size: 12px;
-    color: #888888;    
+.msg-info {
+  font-size: 12px;
+  color: #888888;
 }
 
 /* мои сообщения */
-.my-msg{
-    align-self: flex-end;
-    background: #FFFEC7;
+.my-msg {
+  align-self: flex-end;
+  background: #fffec7;
+  border: none;
 }
 
 /* чужие сообщения */
-.other-msg{
-    align-self: flex-start;
-    flex-direction: column;
-    background: #A6FF72;
-    align-items: flex-start;
+.other-msg {
+  align-self: flex-start;
+  flex-direction: column;
+  background: #a6ff72;
+  align-items: flex-start;
 }
 
-.login-in-msg{
-    padding: 0px 0px 5px 0px;
+.login-in-msg {
+  padding: 0px 0px 5px 0px;
 }
 
 /* -----------------------top of chart------------------------------- */
-.header-container{
-    padding-top: 20px;
+.header-container {
+  padding-top: 20px;
 }
 
 .header-btns {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 5px;
-    border-bottom: 2px solid;
-    border-image:  linear-gradient(113.55deg, #00D94A 0%, rgba(255, 245, 2, 0.8) 10.37%, rgba(17, 234, 12, 0.8) 12.46%, rgba(22, 236, 223, 0.8) 15%, rgba(20, 52, 219, 0.8) 29.99%, rgba(113, 0, 202, 0.418654) 37%, rgba(219, 26, 223, 0.8) 46.7%, rgba(228, 0, 0, 0.8) 49.51%, rgba(254, 125, 6, 0.8) 52.09%, rgba(236, 227, 25, 0.8) 59.25%, #FF0000 64.36%);
-    -webkit-border-image: -webkit-linear-gradient(113.55deg, #00D94A 0%, rgba(255, 245, 2, 0.8) 10.37%, rgba(17, 234, 12, 0.8) 12.46%, rgba(22, 236, 223, 0.8) 15%, rgba(20, 52, 219, 0.8) 29.99%, rgba(113, 0, 202, 0.418654) 37%, rgba(219, 26, 223, 0.8) 46.7%, rgba(228, 0, 0, 0.8) 49.51%, rgba(254, 125, 6, 0.8) 52.09%, rgba(236, 227, 25, 0.8) 59.25%, #FF0000 64.36%);
-    -moz-border-image: -moz-linear-gradient(113.55deg, #00D94A 0%, rgba(255, 245, 2, 0.8) 10.37%, rgba(17, 234, 12, 0.8) 12.46%, rgba(22, 236, 223, 0.8) 15%, rgba(20, 52, 219, 0.8) 29.99%, rgba(113, 0, 202, 0.418654) 37%, rgba(219, 26, 223, 0.8) 46.7%, rgba(228, 0, 0, 0.8) 49.51%, rgba(254, 125, 6, 0.8) 52.09%, rgba(236, 227, 25, 0.8) 59.25%, #FF0000 64.36%);
-    border-image-slice: 1;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5px;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(
+    113.55deg,
+    #00d94a 0%,
+    rgba(255, 245, 2, 0.8) 10.37%,
+    rgba(17, 234, 12, 0.8) 12.46%,
+    rgba(22, 236, 223, 0.8) 15%,
+    rgba(20, 52, 219, 0.8) 29.99%,
+    rgba(113, 0, 202, 0.418654) 37%,
+    rgba(219, 26, 223, 0.8) 46.7%,
+    rgba(228, 0, 0, 0.8) 49.51%,
+    rgba(254, 125, 6, 0.8) 52.09%,
+    rgba(236, 227, 25, 0.8) 59.25%,
+    #ff0000 64.36%
+  );
+  -webkit-border-image: -webkit-linear-gradient(
+    113.55deg,
+    #00d94a 0%,
+    rgba(255, 245, 2, 0.8) 10.37%,
+    rgba(17, 234, 12, 0.8) 12.46%,
+    rgba(22, 236, 223, 0.8) 15%,
+    rgba(20, 52, 219, 0.8) 29.99%,
+    rgba(113, 0, 202, 0.418654) 37%,
+    rgba(219, 26, 223, 0.8) 46.7%,
+    rgba(228, 0, 0, 0.8) 49.51%,
+    rgba(254, 125, 6, 0.8) 52.09%,
+    rgba(236, 227, 25, 0.8) 59.25%,
+    #ff0000 64.36%
+  );
+  -moz-border-image: -moz-linear-gradient(
+    113.55deg,
+    #00d94a 0%,
+    rgba(255, 245, 2, 0.8) 10.37%,
+    rgba(17, 234, 12, 0.8) 12.46%,
+    rgba(22, 236, 223, 0.8) 15%,
+    rgba(20, 52, 219, 0.8) 29.99%,
+    rgba(113, 0, 202, 0.418654) 37%,
+    rgba(219, 26, 223, 0.8) 46.7%,
+    rgba(228, 0, 0, 0.8) 49.51%,
+    rgba(254, 125, 6, 0.8) 52.09%,
+    rgba(236, 227, 25, 0.8) 59.25%,
+    #ff0000 64.36%
+  );
+  border-image-slice: 1;
 }
 
-.chat-img-btn{
-    background: transparent;
-    border: none;
+.chat-img-btn {
+  background: transparent;
+  border: none;
 }
 
-img{
-    height: 25px;
+img {
+  height: 25px;
 }
 
 /* -----------------------send msgs------------------------------- */
-.send-form{
-    padding: 0px 0px 30px 0px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.send-form {
+  padding: 0px 0px 30px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.send-field{
-    width: 92%;
-    height: 30px;
-    padding: 0px 10px;
-    border: none;
-    border-radius: 15px;
-    font-size: 17px;
-    color: black;
+.send-field {
+  width: 92%;
+  height: 30px;
+  padding: 0px 10px;
+  border: none;
+  border-radius: 15px;
+  font-size: 17px;
+  color: black;
 }
 
+/* --------------------------modal----------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  /* top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+  background-color: rgba(0, 0, 0, 0.3);
+  /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.modal {
+  position: fixed;
+  background: #20213a;
+  box-shadow: 2px 2px 20px 1px;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 0px;
+  border: 2px solid #9d6fff;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+
+.btn-close {
+  border: none;
+  font-size: 20px;
+  padding: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #4aae9b;
+  background: transparent;
+}
+
+.menu-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  padding: 15px 20px;
+  background: transparent;
+  border-radius: 0px;
+  border: none;
+}
+
+.btn-edit {
+  margin-left: 30px;
+  color: #9d6fff;
+}
+
+.btn-delete {
+  margin-left: 30px;
+  color: #e40000;
+}
+
+.menu-btn:hover {
+  background: rgba(0, 0, 0, 0.205);
+}
