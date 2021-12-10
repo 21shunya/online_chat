@@ -42,8 +42,7 @@ export async function sendMsg(message) {
 
 export async function deleteMsg(id) {
   try {
-    const response = await http.patch(
-      id + '/delete',
+    const response = await http.patch('/chat/messages/' + id + '/delete',
       {
         id,
       },
