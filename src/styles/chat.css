@@ -161,8 +161,8 @@ img {
 }
 
 .send-field {
-  width: 92%;
   height: 30px;
+  width: 92%;
   padding: 0px 10px;
   border: none;
   border-radius: 15px;
@@ -231,4 +231,22 @@ img {
 
 .menu-btn:hover {
   background: rgba(0, 0, 0, 0.205);
+}
+
+.edit-box {
+    display: flex;
+    flex-direction: column;
+    /* padding-top: 35px; */
+    justify-content: flex-end;
+    width: 92%;
+    background: #FFFEC7;
+    border-radius: 15px;
+    
+}
+
+.edit-label {
+    display: flex;
+    justify-items: center;
+    padding: 12px 0px;
+    font-size: 18px;
 }
