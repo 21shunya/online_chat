@@ -8,11 +8,12 @@
             v-show="isModalVisible"
             @close="closeModal"
         /> -->
-    <EditMessage v-else  @send_Msg="fetchMessages"/>
+    <!-- <EditMessage v-else  @send_Msg="fetchMessages"/> -->
   </div>
 </template>
 
 <script>
+import io from "socket.io-client";
 import TopOfChart from '@/components/TopOfChat.vue';
 import MessageList from '@/components/MessageList.vue';
 import SendMessage from '@/components/SendMessage.vue';
@@ -30,7 +31,8 @@ export default {
   },
   data: () => ({
     messageList: [],
-    isEdit: true
+    isEdit: false,
+    socket: io("http://localhost:8080/chat")
   }),
   computed: {
     ...mapState('auth', ['status']),
@@ -40,6 +42,21 @@ export default {
       this.$router.push('/login');
     }
     this.fetchMessages();
+
+    this.socket.emit("registration", {
+      token: localStorage.getItem("accessToken")
+    });
+
+    this.socket.on("newMessage", data => {
+      console.log("Новое сообщение прилетело = ", data);
+      const msg = {
+        msg: data
+      };
+      this.fetchMessages();
+      this.messageList.push(data);
+    });
+     
+    
   },
   methods: {
     async fetchMessages() {
@@ -50,7 +67,6 @@ export default {
       } finally {
       }
     },
-    async sendMsg() {},
   },
 };
 </script>
