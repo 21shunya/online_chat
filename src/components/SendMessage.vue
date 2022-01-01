@@ -9,12 +9,14 @@
 
 <script>
 import {sendMsg} from '@/netClient/dataService';
+import io from "socket.io-client";
 
 export default{
     name: 'SendMessage',
     props: {},
     data: () => ({
-        message: ''
+        message: '',
+        socket: io()
     }),
     methods: {
         async onSubmitClicked() {
@@ -22,9 +24,13 @@ export default{
                 const send_Msg = await sendMsg(
                     this.message.trim()
                 );
-                this.message = ''
-                //$event.preventDefault();
+
+                this.socket.emit("onSubmitClicked", {
+                message: this.message
+                });
                 this.$emit('send_Msg', send_Msg)
+                this.message = ''
+                
             }
         }
     }
