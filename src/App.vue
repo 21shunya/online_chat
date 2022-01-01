@@ -24,6 +24,9 @@ export default {
     layout() {
       return this.$route.meta?.layout || 'main-layout'
     }
+  },
+  created() {
+    this.$router.push('/chat')
   }
 };
 </script>
