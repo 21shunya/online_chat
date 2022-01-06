@@ -13,7 +13,7 @@ export const auth = {
   actions: {
     async doLogin({commit}, {login, password}) {
       try {
-        const { token, user} = await doLogin( 
+        const { token, user } = await doLogin( 
           login,
           password
         )

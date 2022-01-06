@@ -183,20 +183,7 @@ img {
     align-items: center; */
 }
 
-.modal {
-  position: fixed;
-  background: #20213a;
-  box-shadow: 2px 2px 20px 1px;
-  overflow-x: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 30px 0px;
-  border: 2px solid #9d6fff;
-  box-sizing: border-box;
-  border-radius: 15px;
-}
+
 
 .btn-close {
   border: none;
