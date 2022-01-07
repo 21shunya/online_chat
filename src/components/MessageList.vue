@@ -7,7 +7,6 @@
       <MyMessage v-if="msg.userId == userId" :msg="msg" @deleteMsg="deleteMsg"/>
       <OtherMessages v-else :msg="msg" />
     </div>
-    <ContextMenu @click="hj" v-show="isVisible" @close="close"/>
   </div>
 </template>
 
