@@ -163,13 +163,40 @@ img {
 .send-field {
   height: 30px;
   width: 92%;
-  padding: 0px 10px;
+  padding: 0px 20px;
   border: none;
   border-radius: 15px;
   font-size: 17px;
   color: black;
 }
 
+/* --------------------------edit form--------------------- */
+.edit-box {
+  display: flex;
+  flex-direction: column;
+  width: 92%;
+  min-width: 20px;
+  background: #FFFEC7;
+  border-radius: 15px;
+}
+
+.edit-label {
+  /* display: flex; */
+  align-self: flex-start;
+  /* padding: 12px 0px; */
+  padding: 6px 0 0 20px;
+  font-size: 18px;
+  color: #2F2F2F;
+}
+
+.edit-field {
+width: 100%;
+background: blue;
+}
+
+.img-edit-btn {
+align-self: flex-end;
+}
 /* --------------------------modal----------------------------------- */
 .modal-backdrop {
   position: fixed;
@@ -184,6 +211,21 @@ img {
 }
 
 
+.modal {
+  position: fixed;
+  top: auto;
+  right: 30%;
+  background: #20213a;
+  box-shadow: 2px 2px 20px 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 0px;
+  border: 2px solid #9d6fff;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
 
 .btn-close {
   border: none;
@@ -218,22 +260,4 @@ img {
 
 .menu-btn:hover {
   background: rgba(0, 0, 0, 0.205);
-}
-
-.edit-box {
-    display: flex;
-    flex-direction: column;
-    /* padding-top: 35px; */
-    justify-content: flex-end;
-    width: 92%;
-    background: #FFFEC7;
-    border-radius: 15px;
-    
-}
-
-.edit-label {
-    display: flex;
-    justify-items: center;
-    padding: 12px 0px;
-    font-size: 18px;
 }

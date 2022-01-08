@@ -1,30 +1,31 @@
 <template>
-  <button class="msg-wrapper my-msg" @click="show">
-    <div class="msg-text">
-      {{ msg.message }}
-    </div>
-    <!-- <TimeOfMsg
+  <div class="">
+    <button class="msg-wrapper my-msg" @click="show">
+      <div class="msg-text">
+        {{ msg.message }}
+      </div>
+      <!-- <TimeOfMsg
             :msg="msg"
         />      -->
-    <ContextMenu v-show="isVisible" @close="close"/>
-  </button>
+    </button>
+    <ContextMenu v-show="isVisible" @close="close" @startEditing="startEditing" />
+  </div>
 </template>
 
 <script>
 import TimeOfMsg from '@/components/TimeOfMsg.vue';
 import { deleteMsg } from '@/netClient/dataService';
 import ContextMenu from '@/components/ContextMenu.vue';
+import { mapActions, mapState } from 'vuex';
 
-// let modal = document.querySelector('.modal')
 export default {
   name: 'Message',
   components: {
-    ContextMenu
+    ContextMenu,
   },
   data: () => ({
     isVisible: false,
     modal: document.querySelector('.modal'),
-    
   }),
   props: {
     msg: {
@@ -32,20 +33,29 @@ export default {
       required: true,
     },
   },
+  computed: {
+    ...mapState('msg', ['msgText', 'isEditNow']),
+  },
   methods: {
+    ...mapActions('msg', ['openEditField']),
     show(event) {
       // modalTop = `${event.pageY}px`;
-      // this.modalColor = 'red'
-      // this.modal.style.cssText=`top: ${event.pageY}px;`
-      console.log('show',`${event.pageY}px`);
-      this.isVisible = true
+      this.modal.style.background = 'red';
+      console.log('show', `${event.pageY}px`, this.msg.message);
+      this.isVisible = true;
     },
     close() {
-      this.isVisible = false
-      console.log('closed')
+      this.isVisible = false;
+      console.log('closed');
     },
     deleteMsg() {
       this.$emit('deleteMsg');
+    },
+    async startEditing() {
+      console.log(this.msg.message);
+      this.openEditField(this.msg.message);
+      this.close();
+      console.log(this.isEditNow, this.msgText);
     },
     // async deleteMsg() {
     //     try {
