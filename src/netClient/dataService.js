@@ -40,9 +40,28 @@ export async function sendMsg(message) {
   }
 }
 
+export async function editMsg(id, message) {
+  try {
+    const response = await http.patch('/chat/messages/' + id + '/edit', {
+      message
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': localStorage.accessToken,
+      },
+    }
+    )
+  } catch (error) {
+    console.error({ error });
+    throw error;
+  }
+}
+
 export async function deleteMsg(id) {
   try {
-    const response = await http.patch('/chat/messages/' + id + '/delete',
+    const response = await http.patch(
+      '/chat/messages/' + id + '/delete',
       {
         id,
       },

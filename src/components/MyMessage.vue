@@ -34,7 +34,7 @@ export default {
     },
   },
   computed: {
-    ...mapState('msg', ['msgText', 'isEditNow']),
+    ...mapState('msg', ['msgText', 'isEditNow', 'msgId']),
   },
   methods: {
     ...mapActions('msg', ['openEditField']),
@@ -52,8 +52,8 @@ export default {
       this.$emit('deleteMsg');
     },
     async startEditing() {
-      console.log(this.msg.message);
-      this.openEditField(this.msg.message);
+      console.log(this.msg.message, this.msg.id);
+      this.openEditField({message: this.msg.message, msgId: this.msg.id});
       this.close();
       console.log(this.isEditNow, this.msgText);
     },

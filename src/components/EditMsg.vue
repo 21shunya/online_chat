@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { sendMsg } from '@/netClient/dataService';
+import { editMsg, sendMsg } from '@/netClient/dataService';
 import { mapActions, mapState } from 'vuex';
 
 export default {
@@ -25,7 +25,7 @@ export default {
     message: '',
   }),
   computed: {
-    ...mapState('msg', ['msgText']),
+    ...mapState('msg', ['msgId', 'msgText']),
   },
   mounted() {
     this.message = this.msgText;
@@ -33,10 +33,10 @@ export default {
   methods: {
     async onSubmitClicked() {
       if (this.text !== '') {
-        const send_Msg = await sendMsg(this.message.trim());
-        this.message = '';
+          console.log()
+        const edit_Msg = await editMsg(this.msgId, this.message.trim());
         //$event.preventDefault();
-        this.$emit('send_Msg', send_Msg);
+        this.$emit('send_Msg', edit_Msg);
       }
     },
   },

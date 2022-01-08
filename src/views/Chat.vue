@@ -4,7 +4,7 @@
     <MessageList v-if="messageList && messageList.length" :messages="messageList" />
     <div v-else class="msg-conteiner" id="empty">У вас пока нет сообщений</div>
     <SendMessage v-if="!isEditNow" @send_Msg="fetchMessages" />
-    <EditMessage v-else @send_Msg="fetchMessages" />
+    <EditMessage v-else @edit_Msg="fetchMessages" />
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
   },
   data: () => ({
     messageList: [],
-    socket: io('http://localhost:8081/chat'),
+    socket: io('http://localhost:8082/chat'),
   }),
   computed: {
     ...mapState('auth', ['status']),
