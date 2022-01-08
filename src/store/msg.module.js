@@ -8,18 +8,18 @@ export const msg = {
   actions: {
     openEditField({ commit }, { message, msgId }) {
       console.log('actions:', message, msgId);
-      commit('setMsgText', message, msgId);
+      commit('setMsgText', {message, msgId});
     },
     closeEditField({ commit }) {
       commit('deleteMsg');
     },
   },
   mutations: {
-    setMsgText(state, message, msgId) {
+    setMsgText(state, {message, msgId}) {
       state.msgText = message;
       state.msgId = msgId;
       state.isEditNow = true;
-      console.log('mutations:', state.msgText, state.isEditNow);
+      console.log('mutations:', state.msgText, state.msgId, state.isEditNow);
     },
     deleteMsg(state) {
       state.msgText = '';

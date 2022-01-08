@@ -25,18 +25,20 @@ export default {
     message: '',
   }),
   computed: {
-    ...mapState('msg', ['msgId', 'msgText']),
+    ...mapState('msg', ['msgId', 'msgText',]),
   },
   mounted() {
+    console.log(this.msgId)
     this.message = this.msgText;
   },
   methods: {
+    ...mapActions('msg', ['closeEditField']),
     async onSubmitClicked() {
       if (this.text !== '') {
-          console.log()
         const edit_Msg = await editMsg(this.msgId, this.message.trim());
         //$event.preventDefault();
-        this.$emit('send_Msg', edit_Msg);
+        this.closeEditField()
+        this.$emit('edit_Msg', edit_Msg);
       }
     },
   },

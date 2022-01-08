@@ -27,19 +27,17 @@ export default {
   },
   data: () => ({
     messageList: [],
-    socket: io('http://localhost:8082/chat'),
+    socket: io('http://localhost:8080/chat'),
   }),
   computed: {
     ...mapState('auth', ['status']),
-    ...mapState('msg', ['msgText', 'isEditNow']),
+    ...mapState('msg', ['isEditNow']),
   },
   mounted() {
     if (!this.status.loggedIn) {
       this.$router.push('/login');
     }
     this.fetchMessages();
-
-    console.log(this.msgText, this.isEditNow);
 
     this.socket.emit('registration', {
       token: localStorage.getItem('accessToken'),

@@ -7,9 +7,17 @@ export async function fetchMessages() {
         'x-access-token': localStorage.accessToken,
       },
     });
-
+    const msgList = response?.data?.messageList.sort(function(a, b) {
+      if (a.createdAt > b.createdAt) {
+        return 1;
+      }
+      if (a.createdAt < b.createdAt) {
+        return -1;
+      }
+      return 0;
+    });
     return (
-      response?.data?.messageList.filter((item) => item.isDeleted == false) ?? []
+      msgList.filter((item) => item.isDeleted == false) ?? []
     ); /*фильтр is_deleted*/
   } catch (error) {
     console.error({ error });
@@ -50,8 +58,11 @@ export async function editMsg(id, message) {
         'Content-Type': 'application/json',
         'x-access-token': localStorage.accessToken,
       },
-    }
-    )
+    },
+    );
+    if (!response?.data) console.log("msg doesn't send");
+    console.log(response?.data);
+    return response?.data ?? {};
   } catch (error) {
     console.error({ error });
     throw error;
