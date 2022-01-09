@@ -4,10 +4,10 @@
       <!-- <DateOfMsgs 
                 :msg="msg"
             /> -->
-      <MyMessage v-if="msg.userId == userId" :msg="msg" @show="showCntxtMenu" @deleteMsg="deleteMsg"/>
+      <MyMessage v-if="msg.userId == userId" :msg="msg" @show="showCntxtMenu"/>
       <OtherMessages v-else :msg="msg" />
     </div>
-    <ContextMenu v-show="isVisible" @close="close" @startEditing="startEditing" />
+    <ContextMenu v-show="isVisible" @close="close" @startEditing="startEditing" @refresh="refresh" />
   </div>
 </template>
 
@@ -38,14 +38,6 @@ export default {
       const { userId } = JSON.parse(localStorage.getItem('user'));
       this.userId = userId;
     },
-    async deleteMsg() {
-      try {
-        const response = deleteMsg(this.msg.id);
-      } catch (error) {
-        console.error({ error });
-        throw error;
-      }
-    },
     showCntxtMenu() {
       this.isVisible = true
     },
@@ -53,12 +45,12 @@ export default {
       this.isVisible = false;
       console.log('closed');
     },
-    async startEditing() {
+    startEditing() {
       this.openEditField();
       this.close();
     },
-    deleteMsg() {
-      this.$emit('deleteMsg');
+    refresh() {
+      this.$emit('refresh');
     },
   },
   mounted() {

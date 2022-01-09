@@ -72,10 +72,7 @@ export async function editMsg(id, message) {
 export async function deleteMsg(id) {
   try {
     const response = await http.patch(
-      '/chat/messages/' + id + '/delete',
-      {
-        id,
-      },
+      '/chat/messages/' + id + '/delete', {},
       {
         headers: {
           'x-access-token': localStorage.accessToken,

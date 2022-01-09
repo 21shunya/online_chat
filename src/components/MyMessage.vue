@@ -31,23 +31,19 @@ export default {
   methods: {
     ...mapActions('msg', ['setMsgInfo']),
     show(event) {
-      this.modal.style.top = `${event.pageY}px`;
-      console.log('show', `${event.pageY}px`, this.msg.message);
-      console.log(this.msg.message, this.msg.id);
+      //138
+      let position = 0
+      if (document.documentElement.clientHeight - event.pageY < 158){
+        position = document.documentElement.clientHeight - 158
+      } else {
+        position = event.pageY - 5
+      }
+      this.modal.style.top = `${position}px`;
+      console.log(document.documentElement.clientHeight)
+      console.log('show', `${event.pageY}px`, `${position}px`, this.msg.message);
       this.setMsgInfo({message: this.msg.message, msgId: this.msg.id});
       this.$emit('show')
     },
-    
-    // async deleteMsg() {
-    //     try {
-    //         const response = deleteMsg(
-    //             this.msg.id
-    //         )
-    //     } catch (error) {
-    //         console.error({ error });
-    //         throw error;
-    //     }
-    // }
   },
 };
 </script>

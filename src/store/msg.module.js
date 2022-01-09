@@ -11,7 +11,7 @@ export const msg = {
       commit('setMsgInfo', {message, msgId});
     },
     deleteMsgInfo({ commit }) {
-      commit('deleteMsg');
+      commit('deleteMsgInfo');
     },
     openEditField({ commit },) {
       commit('openEditField')
