@@ -37,7 +37,7 @@ export default {
       if (this.text !== '') {
         const edit_Msg = await editMsg(this.msgId, this.message.trim());
         //$event.preventDefault();
-        this.closeEditField()
+        this.closeEditField();
         this.$emit('edit_Msg', edit_Msg);
       }
     },

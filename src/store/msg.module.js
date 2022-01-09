@@ -3,28 +3,38 @@ export const msg = {
   state: {
     msgText: '',
     msgId: '',
-    isEditNow: false,
+    isEditNow: false
   },
   actions: {
-    openEditField({ commit }, { message, msgId }) {
+    setMsgInfo({ commit }, { message, msgId }) {
       console.log('actions:', message, msgId);
-      commit('setMsgText', {message, msgId});
+      commit('setMsgInfo', {message, msgId});
     },
-    closeEditField({ commit }) {
+    deleteMsgInfo({ commit }) {
       commit('deleteMsg');
     },
+    openEditField({ commit },) {
+      commit('openEditField')
+    },
+    closeEditField({ commit },) {
+      commit('closeEditField')
+    }
   },
   mutations: {
-    setMsgText(state, {message, msgId}) {
+    setMsgInfo(state, {message, msgId}) {
       state.msgText = message;
       state.msgId = msgId;
-      state.isEditNow = true;
-      console.log('mutations:', state.msgText, state.msgId, state.isEditNow);
+      console.log('mutations:', state.msgText, state.msgId);
     },
-    deleteMsg(state) {
+    deleteMsgInfo(state) {
       state.msgText = '';
       state.msgId = ''
-      state.isEditNow = false;
     },
+    openEditField(state) {
+      state.isEditNow = true
+    },
+    closeEditField(state) {
+      state.isEditNow = false
+    }
   },
 };

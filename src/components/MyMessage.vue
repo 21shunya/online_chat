@@ -1,5 +1,4 @@
 <template>
-  <div class="">
     <button class="msg-wrapper my-msg" @click="show">
       <div class="msg-text">
         {{ msg.message }}
@@ -8,23 +7,16 @@
             :msg="msg"
         />      -->
     </button>
-    <ContextMenu v-show="isVisible" @close="close" @startEditing="startEditing" />
-  </div>
 </template>
 
 <script>
 import TimeOfMsg from '@/components/TimeOfMsg.vue';
 import { deleteMsg } from '@/netClient/dataService';
-import ContextMenu from '@/components/ContextMenu.vue';
 import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'Message',
-  components: {
-    ContextMenu,
-  },
   data: () => ({
-    isVisible: false,
     modal: document.querySelector('.modal'),
   }),
   props: {
@@ -34,29 +26,18 @@ export default {
     },
   },
   computed: {
-    ...mapState('msg', ['msgText', 'isEditNow', 'msgId']),
+    ...mapState('msg', ['msgText', 'msgId']),
   },
   methods: {
-    ...mapActions('msg', ['openEditField']),
+    ...mapActions('msg', ['setMsgInfo']),
     show(event) {
-      // modalTop = `${event.pageY}px`;
-      this.modal.style.background = 'red';
+      this.modal.style.top = `${event.pageY}px`;
       console.log('show', `${event.pageY}px`, this.msg.message);
-      this.isVisible = true;
-    },
-    close() {
-      this.isVisible = false;
-      console.log('closed');
-    },
-    deleteMsg() {
-      this.$emit('deleteMsg');
-    },
-    async startEditing() {
       console.log(this.msg.message, this.msg.id);
-      this.openEditField({message: this.msg.message, msgId: this.msg.id});
-      this.close();
-      console.log(this.isEditNow, this.msgText);
+      this.setMsgInfo({message: this.msg.message, msgId: this.msg.id});
+      this.$emit('show')
     },
+    
     // async deleteMsg() {
     //     try {
     //         const response = deleteMsg(

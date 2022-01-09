@@ -4,9 +4,10 @@
       <!-- <DateOfMsgs 
                 :msg="msg"
             /> -->
-      <MyMessage v-if="msg.userId == userId" :msg="msg" @deleteMsg="deleteMsg"/>
+      <MyMessage v-if="msg.userId == userId" :msg="msg" @show="showCntxtMenu" @deleteMsg="deleteMsg"/>
       <OtherMessages v-else :msg="msg" />
     </div>
+    <ContextMenu v-show="isVisible" @close="close" @startEditing="startEditing" />
   </div>
 </template>
 
@@ -15,6 +16,8 @@ import MyMessage from '@/components/MyMessage.vue';
 import OtherMessages from '@/components/OtherMessages.vue';
 import DateOfMsgs from '@/components/DateOfMsgs.vue';
 import { deleteMsg } from '@/netClient/dataService';
+import ContextMenu from '@/components/ContextMenu.vue';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'MessageList',
@@ -23,12 +26,14 @@ export default {
     MyMessage,
     OtherMessages,
     DateOfMsgs,
+    ContextMenu
   },
   data: () => ({
     userId: '',
+    isVisible: false,
   }),
   methods: {
-    
+    ...mapActions('msg', ['openEditField']),
     getUserId() {
       const { userId } = JSON.parse(localStorage.getItem('user'));
       this.userId = userId;
@@ -40,6 +45,20 @@ export default {
         console.error({ error });
         throw error;
       }
+    },
+    showCntxtMenu() {
+      this.isVisible = true
+    },
+    close() {
+      this.isVisible = false;
+      console.log('closed');
+    },
+    async startEditing() {
+      this.openEditField();
+      this.close();
+    },
+    deleteMsg() {
+      this.$emit('deleteMsg');
     },
   },
   mounted() {

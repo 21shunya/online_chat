@@ -1,7 +1,7 @@
 <template>
   <div class="chat">
     <TopOfChart />
-    <MessageList v-if="messageList && messageList.length" :messages="messageList" />
+    <MessageList v-if="messageList && messageList.length" :messages="messageList"/>
     <div v-else class="msg-conteiner" id="empty">У вас пока нет сообщений</div>
     <SendMessage v-if="!isEditNow" @send_Msg="fetchMessages" />
     <EditMessage v-else @edit_Msg="fetchMessages" />
@@ -60,7 +60,7 @@ export default {
       } catch (error) {
       } finally {
       }
-    },
+    }
   },
 };
 </script>
