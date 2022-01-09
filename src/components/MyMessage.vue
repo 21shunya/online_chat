@@ -3,6 +3,7 @@
       <div class="msg-text">
         {{ msg.message }}
       </div>
+      <img v-if="msg.isEdited" src="@/assets/pencil_in_msg.svg"/>
       <!-- <TimeOfMsg
             :msg="msg"
         />      -->
@@ -31,6 +32,7 @@ export default {
     ...mapActions('msg', ['setMsgInfo']),
     show(event) {
       //138
+      console.log(this.msg.isEdited)
       let position = 0
       if (document.documentElement.clientHeight - event.pageY < 158){
         position = document.documentElement.clientHeight - 158

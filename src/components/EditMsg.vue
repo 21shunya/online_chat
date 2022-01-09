@@ -8,7 +8,7 @@
     </div>
     <div class="img-edit-btn">
       <button class="chat-img-btn " @click="onSubmitClicked">
-        <img src="@/data/send.png" />
+        <img src="@/assets/check.svg" />
       </button>
     </div>
   </div>
