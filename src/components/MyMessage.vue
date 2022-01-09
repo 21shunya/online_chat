@@ -11,7 +11,6 @@
 
 <script>
 import TimeOfMsg from '@/components/TimeOfMsg.vue';
-import { deleteMsg } from '@/netClient/dataService';
 import { mapActions, mapState } from 'vuex';
 
 export default {
@@ -39,7 +38,6 @@ export default {
         position = event.pageY - 5
       }
       this.modal.style.top = `${position}px`;
-      console.log(document.documentElement.clientHeight)
       console.log('show', `${event.pageY}px`, `${position}px`, this.msg.message);
       this.setMsgInfo({message: this.msg.message, msgId: this.msg.id});
       this.$emit('show')
