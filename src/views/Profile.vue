@@ -1,13 +1,13 @@
 <template>
   <div>
     <button class="btn-img-exit" @click="goToChat">
-      <img class="img-exit" src="@/assets/exit-normal.svg"/>
-    </button>  
-    <div id='title'>
+      <img class="img-exit" src="@/assets/exit-normal.svg" />
+    </button>
+    <div id="title">
       Профиль
     </div>
     <div>
-      <img class="profile-photo" src="@/assets/profPhoto-default.svg"/>
+      <img class="profile-photo" src="@/assets/profPhoto-default.svg" />
       <div>
         <button class="secondary-btn change-photo">Изменить</button>
       </div>
@@ -15,21 +15,11 @@
     <form class="fields f-reg" @keyup.enter="onSubmitClicked">
       <div class="profile-field">
         <label for="login">Login</label>
-        <input 
-          v-model="user.login"
-          class="inp-profile"
-          type="text" 
-          name="login"
-        />
+        <input v-model="login" class="inp-profile" type="text" name="login" />
       </div>
       <div class="profile-field">
         <label for="email">Email</label>
-        <input 
-          v-model="user.email"
-          class="inp-profile"
-          type="text" 
-          name="login"
-        />
+        <input v-model="email" class="inp-profile" type="text" name="login" />
       </div>
     </form>
     <div class="btns-profile">
@@ -45,20 +35,35 @@ import { mapActions } from 'vuex';
 export default {
   name: 'Profile',
   computed: {
-      loggedIn() {
-        return this.$store.state.auth.status.loggedIn;
-      }
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    },
   },
   data: () => ({
     user: '',
-    login:'',
-    email:'',
+    login: '',
+    email: '',
+    timerId: 0,
   }),
   mounted() {
     if (!this.loggedIn) {
       this.$router.push('/login');
     }
-    this.fetchUser()
+    this.fetchUser();
+  },
+  watch: {
+    login: function() {
+      if (this.timerId != 0) {
+        clearTimeout(this.timerId);
+        this.timerId = setTimeout(() => this.onSubmitClicked(), 2000);
+      } else this.timerId = setTimeout(() => this.onSubmitClicked(), 2000);
+    },
+    email: function() {
+      if (this.timerId != 0) {
+        clearTimeout(this.timerId);
+        this.timerId = setTimeout(() => this.onSubmitClicked(), 2000);
+      } else this.timerId = setTimeout(() => this.onSubmitClicked(), 2000);
+    },
   },
   methods: {
     ...mapActions('auth', ['doLogout']),
@@ -67,30 +72,27 @@ export default {
         await this.doLogout();
         this.$router.push('/login');
       } catch (error) {
-        console.log({error})
+        console.log({ error });
       }
     },
     async fetchUser() {
       try {
         const response = await fetchUser();
-        this.user = response
-      } catch (error) {
-      }
+        this.user = response;
+        this.login = this.user.login;
+        this.email = this.user.email;
+      } catch (error) {}
     },
     async onSubmitClicked() {
-      try {
-        const response = await updateUser(
-          this.user.login.trim(), 
-          this.user.email.trim()
-        );
-        alert('данные изменены');
-      } catch (error) {
-      }
+        console.log('send', this.login, this.email);
+        try {
+          const response = await updateUser(this.login.trim(), this.email.trim());
+          alert('данные изменены');
+        } catch (error) {}
     },
     goToChat() {
-      this.$router.push("/chat")
-    }
-  }
+      this.$router.push('/chat');
+    },
+  },
 };
 </script>
-
